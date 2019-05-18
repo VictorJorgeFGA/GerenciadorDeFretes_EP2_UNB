@@ -2,7 +2,7 @@
 
 ## Definições
 
-Será obrigatório o uso da ferramenta de versionamento git. A avaliação abordará, não se limitando a estes, os pontos abaixo:
+Será obrigatório o uso da ferramenta de versionamento git! A avaliação abordará, não se limitando a estes, os pontos abaixo:
 - Commits (Possui mensagens significativas? Demonstram trabalho contínuo? São atômicos?);
 - Fork (Foi realizado do repositório original da disciplina?);
 
