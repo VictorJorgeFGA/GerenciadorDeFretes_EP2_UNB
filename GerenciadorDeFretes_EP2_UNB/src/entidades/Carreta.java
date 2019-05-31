@@ -28,6 +28,7 @@ public class Carreta extends Veiculo {
 		System.out.println(c.getDecaimento());
 		System.out.println(c.getVeiculoID());
 		System.out.println(c.getVelMedia());
+		System.out.println(c);
 		
 		Veiculo v = c;
 		if( v.getCombustivel(2) == Combustivel.DIESEL )
