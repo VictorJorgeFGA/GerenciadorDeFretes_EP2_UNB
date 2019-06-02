@@ -1,11 +1,11 @@
 /* Classe abstrata Veiculo que será utilizada para representar todo tipo de veículo do negócio na memória em tempo de execução
- * Ultima modificação: 02/06/2018 - 18:15
+ * Ultima modificação: 02/06/2018 - 18:25
  * Pendencias: Nenhuma.
  */
 package entidades;
 
 //Inicio da declaração da classe abstrata Veiculo
-public abstract class Veiculo {
+public abstract class Veiculo implements Comparable<Veiculo>{
 	
 	public enum Status { RESERVADO , LIVRE };					//Enum que descreve o estado do veiculo no negócio
 	public enum Tipo { CARRETA , CARRO , VAN , MOTO };			//Enum que descreve o tipo do veiculo no negócio
@@ -98,6 +98,18 @@ public abstract class Veiculo {
 		
 		return "Veiculo: " + getNome() + ". Placa: " + getPlaca() + ". Do tipo " + getTipo() + ". Status na transportadora: " + getEstado();
 	}//Fim do metodo toString 
+	
+	//Sobrescrita do metodo compareTo
+	@Override
+	public int compareTo( Veiculo veiculo2 ) {
+		if( getVeiculoID() == veiculo2.getVeiculoID() )
+			return 0;
+		else if( getVeiculoID() > veiculo2.getVeiculoID() )
+			return 1;
+		
+		return -1;
+		
+	}//Fim do metodo compareTo
 
 	//Metodo main para teste unitario -> nerfado
 	public static void main(String[] args) {

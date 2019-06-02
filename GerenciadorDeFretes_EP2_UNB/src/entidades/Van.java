@@ -27,7 +27,7 @@ public class Van extends Veiculo {
 								velMediaVan = 80,		//Velocidade media em Km/H
 								decaimentoVan = 0.001;	//Decaimento no rendimento do combustivel em (Km/L)/Kg
 	
-	Van( Status estado , int veiculoID, String nome, String placa){
+	public Van( Status estado , int veiculoID, String nome, String placa){
 		super( estado , Tipo.VAN , veiculoID, rendimentoVan, cargaMaximaVan, velMediaVan, decaimentoVan, nome, placa );
 	}
 	
