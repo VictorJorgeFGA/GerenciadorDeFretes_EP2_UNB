@@ -1,5 +1,5 @@
 /* Classe Moto para representar na memória em tempo de execução os veículos do tipo Moto do negócio.
- * Ultima modificação: 31/05/2018 - 10:07
+ * Ultima modificação: 02/06/2018 - 18:15
  * Pendencias: Nenhuma
  */
 package entidades;
@@ -16,8 +16,8 @@ public class Moto extends Veiculo {
 								decaimentoMoto = 0.3;	//Decaimento no rendimento do combustivel em (Km/L)/Kg
 	
 	//Inicio do construtor da classe Moto
-	public Moto( Status estado , int veiculoID ) {
-		super( estado , Tipo.MOTO , veiculoID, rendimentoMoto, cargaMaximaMoto, velMediaMoto, decaimentoMoto );
+	public Moto( Status estado , int veiculoID, String nome, String placa) {
+		super( estado , Tipo.MOTO , veiculoID, rendimentoMoto, cargaMaximaMoto, velMediaMoto, decaimentoMoto, nome, placa );
 		
 	}//Fim do construtor da classe Moto 
 	
@@ -40,7 +40,7 @@ public class Moto extends Veiculo {
 	//Metodo main para teste unitario
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Moto m = new Moto( Status.LIVRE , 1 );
+		Moto m = new Moto( Status.LIVRE , 1, "CG 125", "ABC-1234" );
 		System.out.println(m);
 		System.out.println( m.getCargaMaxima() );
 		System.out.println( m.getCombustivel(2) );

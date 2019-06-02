@@ -1,12 +1,9 @@
 /* Classe carro, utilizada para representar os veículos, que são carros, na memória em tempo de execução
- * Ultima modificação: 31/05/2018 - 9:13
+ * Ultima modificação: 02/06/2018 - 18:14
+ * Pendencias: NENHUMA
  */
 
 package entidades;
-
-import entidades.Veiculo.Combustivel;
-import entidades.Veiculo.Status;
-import entidades.Veiculo.Tipo;
 
 //Inicio da declaração da classe Carro, que herda da classe Veiculo
 public class Carro extends Veiculo {
@@ -15,13 +12,13 @@ public class Carro extends Veiculo {
 									combustivel2 = Combustivel.ALCOOL;
 	
 	public static final double rendimentoCarro = 14,		//Km/L
-							   cargaMaximaCarro = 360, 		//Toneladas
+							   cargaMaximaCarro = 360, 		//Kg
 							   velMediaCarro = 100,			//Km/H
 							   decaimentoCarro = 0.025;		//Km/L
 	
 	//Inicio do construtor da classe Carro
-	public Carro( Status estado , int veiculoID ) {
-		super( estado , Tipo.CARRO , veiculoID , rendimentoCarro , cargaMaximaCarro, velMediaCarro , decaimentoCarro );
+	public Carro( Status estado , int veiculoID, String nome, String placa ) {
+		super( estado , Tipo.CARRO , veiculoID , rendimentoCarro , cargaMaximaCarro, velMediaCarro , decaimentoCarro, nome, placa );
 		
 	}//Fim do construtor da classe carro
 	
@@ -43,7 +40,7 @@ public class Carro extends Veiculo {
 	public static void main(String[] args) {
 		
 		// TODO Auto-generated method stub
-		Carro c = new Carro( Status.LIVRE , 0 );
+		Carro c = new Carro( Status.LIVRE , 0, "Fiat Uno Mille com escada", "KJP-1351" );
 		System.out.println(c);
 		System.out.println( c.getCargaMaxima() );
 		System.out.println( c.getCombustivel(1) );

@@ -1,13 +1,9 @@
 /* Classe Van para representar na memória em tempo de execução os veículos do tipo Van do negócio.
- * Ultima modificação: 31/05/2018 - 15:06
+ * Ultima modificação: 02/06/2018 - 18:12
  * Pendencias: Nenhuma
  */
 
 package entidades;
-
-import entidades.Veiculo.Combustivel;
-import entidades.Veiculo.Status;
-import entidades.Veiculo.Tipo;
 
 //Inicio da declaracao da classe Van
 public class Van extends Veiculo {
@@ -31,8 +27,8 @@ public class Van extends Veiculo {
 								velMediaVan = 80,		//Velocidade media em Km/H
 								decaimentoVan = 0.001;	//Decaimento no rendimento do combustivel em (Km/L)/Kg
 	
-	Van( Status estado , int veiculoID ){
-		super( estado , Tipo.VAN , veiculoID, rendimentoVan, cargaMaximaVan, velMediaVan, decaimentoVan );
+	Van( Status estado , int veiculoID, String nome, String placa){
+		super( estado , Tipo.VAN , veiculoID, rendimentoVan, cargaMaximaVan, velMediaVan, decaimentoVan, nome, placa );
 	}
 	
 	
@@ -50,7 +46,7 @@ public class Van extends Veiculo {
 	//Metodo main para testes unitarios
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Van m = new Van( Status.LIVRE , 1 );
+		Van m = new Van( Status.LIVRE , 1, "Mercedes Sprinter", "OVN-7399" );
 		
 		System.out.println(m);
 		System.out.println( m.getCargaMaxima() );
