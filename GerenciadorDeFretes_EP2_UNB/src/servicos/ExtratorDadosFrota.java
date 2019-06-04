@@ -1,8 +1,3 @@
-/* Classe ExtratorDeDados: utilizada para extrair dados do banco de dados e converte-los em objetos tangiveis para o programa
- * Ultima modificação: 03/06/2018 - 12:32
- * Pendencias: NENHUMA
- */
-
 package servicos;
 
 import java.io.BufferedReader;
@@ -18,16 +13,19 @@ import entidades.Van;
 import entidades.Veiculo;
 import entidades.Veiculo.Status;
 
-//Inicio da declaracao da classe
-public class ExtratorDeDados {
+public class ExtratorDadosFrota {
+	
 	private TreeSet<Veiculo> frota;	//Conjunto que guardara a frota de veiculos a ser extraida do arquivo
 	
 	//Construtor baseado em arquivo de texto
-	public ExtratorDeDados( String caminho ){
+	public ExtratorDadosFrota( String caminho ){
+		
 		//Bloco try with resources
 		try( BufferedReader dataBase = new BufferedReader(new FileReader(caminho)) ){
+			
 			//Instanciacao do conjunto que guardara a frota de veiculos
 			frota = new TreeSet<Veiculo>();
+			
 			String linhaAtual = null;	//Guarda a ultima linha lida
 			int atualID = 0;			//Id para cada veiculo (em ordem crescente e sequencial)
 			
@@ -71,11 +69,10 @@ public class ExtratorDeDados {
 	//Main para teste unitario
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Set<Veiculo> frota = new ExtratorDeDados( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
+		Set<Veiculo> frota = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
 
 		for( Veiculo v : frota )
 			System.out.println( v );
 		
 	}//Fim da Main
-
-}//Fim da declaracao da classe
+}

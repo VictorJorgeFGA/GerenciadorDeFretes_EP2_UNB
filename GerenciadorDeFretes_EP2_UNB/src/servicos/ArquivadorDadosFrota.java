@@ -1,26 +1,21 @@
-/* Classe SalvadorDeDadosFrota: desempenha o papel de atualizar o banco de dados, deixando o mesmo apenas com informacoes dos objetos atuais existentes no negocio
- * Ultima modificacao: 03/06/2018 - 13:30
- * Pendencias:	NENHUMA
- */
-
 package servicos;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Set;
+
 import entidades.Carro;
 import entidades.Veiculo;
 import entidades.Veiculo.Status;
 
-
-//Inicio da declaração da classe SalvadorDeDadosFrota
-public class SalvadorDeDadosFrota {
+public class ArquivadorDadosFrota {
+	
 	private Set<Veiculo> frota;	//Referencia para a frota atual do negocio(execucao atual)
 	private String caminho;		//Referencia para o caminho que contem o banco de dados
 	
 	//Construtor para um objeto SalvadorDeDadosFrota
-	public SalvadorDeDadosFrota( String caminho , Set<Veiculo> frota ) {
+	public ArquivadorDadosFrota( String caminho , Set<Veiculo> frota ) {
 		setFrota( frota );
 		setCaminho(caminho);
 		
@@ -102,7 +97,7 @@ public class SalvadorDeDadosFrota {
 		// TODO Auto-generated method stub
 		
 		//Extraindo a frota ja existente no arquivo
-		Set<Veiculo> kappa = new ExtratorDeDados( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
+		Set<Veiculo> kappa = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
 		System.out.println(kappa.size());
 		
 		boolean k = kappa.add( new Carro( Status.LIVRE , kappa.size() , "BMW M5 V10 POWER 550 Hp" , "KJK-5522" ) );	//Adicionando um novo veiculo na frota
@@ -115,8 +110,8 @@ public class SalvadorDeDadosFrota {
 			System.out.println(a);
 		
 		//Salvando a nova frota no banco de dados
-		new SalvadorDeDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" , kappa ).salvarDadosAtuais();
+		new ArquivadorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" , kappa ).salvarDadosAtuais();
 		
 	}//Fim do metodo main
 
-}//Fim da declaracao da classe
+}
