@@ -1,5 +1,5 @@
 /* Classe abstrata Veiculo que será utilizada para representar todo tipo de veículo do negócio na memória em tempo de execução
- * Ultima modificação: 02/06/2018 - 18:25
+ * Ultima modificação: 02/06/2019 - 18:25
  * Pendencias: Nenhuma.
  */
 package entidades;

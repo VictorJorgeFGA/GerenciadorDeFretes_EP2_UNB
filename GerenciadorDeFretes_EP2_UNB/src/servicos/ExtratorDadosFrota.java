@@ -61,7 +61,7 @@ public class ExtratorDadosFrota {
 	}//Fim do construtor
 	
 	//Retorna um TreeSet que contem todos os veiculos existentes na frota representada na dataBase
-	public final TreeSet<Veiculo> getFrota(){
+	public TreeSet<Veiculo> getFrota(){
 		return frota;
 	
 	}//Fim do metodo getFrota
