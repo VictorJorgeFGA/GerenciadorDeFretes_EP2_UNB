@@ -1,3 +1,7 @@
+/* Classe ArquivadorDadosFrota, utilizada para armazenar na dataBase a atual frota descrita em memoria
+ * Ultima modificacao: 06/06/2019 - 13:30
+ * Pendencias: NENHUMA
+ */
 package servicos;
 
 import java.io.BufferedWriter;
@@ -20,6 +24,44 @@ public class ArquivadorDadosFrota {
 		setCaminho(caminho);
 		
 	}//Fim do construtor
+	
+	private String gerarLinhaVeiculo( Veiculo veiculo ) {
+		
+		String linhaDeDados = new String("");	//Linha que sera inserida no banco de dados
+		
+		linhaDeDados += veiculo.getVeiculoID();
+		
+		//Conversao de Enum Tipo para Char
+		switch(veiculo.getTipo()) {
+		case CARRETA:
+			linhaDeDados += ";T";
+			break;
+		case CARRO:
+			linhaDeDados += ";C";
+			break;
+		case MOTO:
+			linhaDeDados += ";M";
+			break;
+		case VAN:
+			linhaDeDados += ";V";
+			break;
+		}
+		
+		//Conversao de Enum Status para Char
+		switch( veiculo.getEstado() ) {
+		case LIVRE:
+			linhaDeDados += ";L";
+			break;
+		case RESERVADO:
+			linhaDeDados += ";R";
+			break;
+		}
+		
+		linhaDeDados += ";" + veiculo.getNome();		//Adicionando o nome do veiculo na linha de dados
+		linhaDeDados += ";" + veiculo.getPlaca();		//Adicionando a placa do veiculo na linha de dados
+		
+		return linhaDeDados;
+	}
 	
 	//Alterar a frota para qual este objeto aponta
 	public void setFrota( Set<Veiculo> frota ) {
@@ -49,38 +91,7 @@ public class ArquivadorDadosFrota {
 			
 			//Iterando sobre o conjunto de veiculos da frota
 			for( Veiculo veiculo : frota ) {
-				String linhaDeDados = new String("");	//Linha que sera inserida no banco de dados
-				//Conversao de Enum Tipo para Char
-				switch(veiculo.getTipo()) {
-				case CARRETA:
-					linhaDeDados += "T";
-					break;
-				case CARRO:
-					linhaDeDados += "C";
-					break;
-				case MOTO:
-					linhaDeDados += "M";
-					break;
-				case VAN:
-					linhaDeDados += "V";
-					break;
-				}
-				
-				//Conversao de Enum Status para Char
-				switch( veiculo.getEstado() ) {
-				case LIVRE:
-					linhaDeDados += ";L";
-					break;
-				case RESERVADO:
-					linhaDeDados += ";R";
-					break;
-				}
-				
-				linhaDeDados += ";" + veiculo.getNome();		//Adicionando o nome do veiculo na linha de dados
-				linhaDeDados += ";" + veiculo.getPlaca();		//Adicionando a placa do veiculo na linha de dados
-				
-				
-				dataBase.write(linhaDeDados);		//Inserindo a linha montada acima no banco de dados
+				dataBase.write( gerarLinhaVeiculo( veiculo ) );		//Inserindo a linha montada acima no banco de dados
 				dataBase.newLine();					//Quebra de linha para sinalizar fim da linha de dados
 				
 			}//Fim da iteracao

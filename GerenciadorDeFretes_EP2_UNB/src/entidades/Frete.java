@@ -6,6 +6,7 @@
 package entidades;
 
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
 
@@ -73,6 +74,24 @@ public class Frete {
 
 	public Date getData() {
 		return data;
+	}
+	
+	public void atualizarData() {
+		setData( new Date() );
+	}
+	
+	//Sobrescrita do metodo toString para melhor debug
+	@Override
+	public String toString() {
+		String temp = new String("");
+		temp = "Frete realizado em " + new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format( getData() ) +
+				". Com um gasto total de R$ " + getCusto() + ", lucro total de R$ " + getLucro() + ".\nTempo gasto total: " +
+				getTempoGasto() + "horas.\nCarga transportada: " + getCarga() + " Kg.\nFrota utilizada:";
+		
+		for( Veiculo v : getFrotaUtilizada() ) {
+			temp += "\n" + v.toString();
+		}
+		return temp;
 	}
 
 	public static void main(String[] args) throws ParseException {

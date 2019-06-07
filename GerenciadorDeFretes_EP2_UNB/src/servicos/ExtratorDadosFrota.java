@@ -1,3 +1,7 @@
+/* Classe ExtratorDadosFrota, utilizada para extrair dados da dataBase e converte-los para dados reconhecidos pelo programada
+ * Ultima modificacao: 06/06/2019 - 13:31
+ * Pendencias: NENHUMA
+ */
 package servicos;
 
 import java.io.BufferedReader;
@@ -27,31 +31,31 @@ public class ExtratorDadosFrota {
 			frota = new TreeSet<Veiculo>();
 			
 			String linhaAtual = null;	//Guarda a ultima linha lida
-			int atualID = 0;			//Id para cada veiculo (em ordem crescente e sequencial)
 			
 			//Le o arquivo ate EOF ( Assumindo que este nao esteja corrompido )
 			while( (linhaAtual = dataBase.readLine()) != null ) {
-				String[] informacoesLinha = linhaAtual.split(";");	//Separacao dos campos da linha em: TIPO ; STATUS ; NOME ; PLACA
+				String[] informacoesLinha = linhaAtual.split(";");	//Separacao dos campos da linha em: ID ; TIPO ; STATUS ; NOME ; PLACA
+				
+				int atualID = Integer.parseInt(informacoesLinha[0]);
 				
 				//Transformando a informacao de STATUS do veiculo de STRING para enum Status
-				Status estadoVeiculo = informacoesLinha[1].equals( "L" ) ? Status.LIVRE : Status.RESERVADO;
+				Status estadoVeiculo = informacoesLinha[2].equals( "L" ) ? Status.LIVRE : Status.RESERVADO;
 				
 				//Instanciando um novo veiculo com base no TIPO
-				switch( informacoesLinha[0] ) {
+				switch( informacoesLinha[1] ) {
 				case "T":
-					frota.add( new Carreta( estadoVeiculo, atualID, informacoesLinha[2], informacoesLinha[3] ) );
+					frota.add( new Carreta( estadoVeiculo, atualID, informacoesLinha[3], informacoesLinha[4] ) );
 					break;
 				case "C":
-					frota.add( new Carro( estadoVeiculo, atualID , informacoesLinha[2], informacoesLinha[3] ) );
+					frota.add( new Carro( estadoVeiculo, atualID , informacoesLinha[3], informacoesLinha[4] ) );
 					break;
 				case "V":
-					frota.add( new Van( estadoVeiculo, atualID , informacoesLinha[2], informacoesLinha[3] ) );
+					frota.add( new Van( estadoVeiculo, atualID , informacoesLinha[3], informacoesLinha[4] ) );
 					break;
 				case "M":
-					frota.add( new Moto( estadoVeiculo, atualID , informacoesLinha[2], informacoesLinha[3] ) );
+					frota.add( new Moto( estadoVeiculo, atualID , informacoesLinha[3], informacoesLinha[4] ) );
 					break;
 				}
-				atualID++;	//Incrementando o ID para um possivel proximo veiculo a ser alocado
 			}
 		}
 		catch ( IOException e ) {

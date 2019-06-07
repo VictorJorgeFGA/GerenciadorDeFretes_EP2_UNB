@@ -1,6 +1,6 @@
 /* Classe abstrata Veiculo que será utilizada para representar todo tipo de veículo do negócio na memória em tempo de execução
- * Ultima modificação: 02/06/2019 - 18:25
- * Pendencias: Nenhuma.
+ * Ultima modificação: 06/06/2019 - 13:31
+ * Pendencias: NENHUMA
  */
 package entidades;
 
@@ -96,10 +96,10 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	@Override
 	public String toString() {
 		
-		return "Veiculo: " + getNome() + ". Placa: " + getPlaca() + ". Do tipo " + getTipo() + ". Status na transportadora: " + getEstado();
+		return "Veiculo: " + getNome() + ". Placa: " + getPlaca() + ". Do tipo " + getTipo() + ". Status na transportadora: " + getEstado() + ". ID: " + getVeiculoID();
 	}//Fim do metodo toString 
 	
-	//Sobrescrita do metodo compareTo
+	//Sobrescrita do metodo compareTo utilizando o rendimento como base
 	@Override
 	public int compareTo( Veiculo veiculo2 ) {
 		if( getVeiculoID() == veiculo2.getVeiculoID() )
