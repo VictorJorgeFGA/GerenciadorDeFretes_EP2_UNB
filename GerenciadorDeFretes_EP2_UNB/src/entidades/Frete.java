@@ -9,8 +9,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Set;
+import java.util.TreeSet;
 
-public class Frete {
+public class Frete implements Comparable<Frete>{
 	
 	private Set<Veiculo> frotaUtilizada;	//Veiculos utilizados no frete
 	private Double carga;					//Carga transportada em Kg
@@ -21,6 +22,17 @@ public class Frete {
 	
 	public Frete( Set<Veiculo> frotaUtilizada, double carga, double custo, double lucro, double tempoGasto, Date data ) {
 		setFrotaUtilizada( frotaUtilizada );
+		setCarga( carga );
+		setCusto( custo );
+		setLucro( lucro );
+		setTempoGasto( tempoGasto );
+		setData( data );
+	}
+	
+	public Frete( Veiculo veiculoUtilizado , double carga, double custo, double lucro, double tempoGasto, Date data ) {
+		frotaUtilizada = new TreeSet<Veiculo>();
+		frotaUtilizada.add( veiculoUtilizado );
+		
 		setCarga( carga );
 		setCusto( custo );
 		setLucro( lucro );
@@ -92,6 +104,47 @@ public class Frete {
 			temp += "\n" + v.toString();
 		}
 		return temp;
+	}
+	
+	@Override
+	//Maior = Melhor(Beneficios)
+	public int compareTo( Frete frete2 ) {
+		
+		//Se o lucro deste frete for maior, entao maior
+		if( getLucro() > frete2.getLucro() )
+			return 1;
+		
+		//Se o lucro deste frete for menor, entao menor
+		else if( getLucro() < frete2.getLucro() )
+			return -1;
+		
+		//Se o lucro dos dois eh igual entao, comparar outros atributos
+		else {
+			//Se o tempo gasto for menor, entao maior
+			if( getTempoGasto() < frete2.getTempoGasto() )
+				return 1;
+			
+			//Se o tempo gasto for maior, entao menor
+			else if( getTempoGasto() > frete2.getTempoGasto() )
+				return -1;
+			
+			//Se o tempo gasto for igual
+			else {
+				
+				//Se a quantidade de veiculos for menor, entao maior
+				if( getFrotaUtilizada().size() < frete2.getFrotaUtilizada().size() )
+					return 1;
+				
+				//Se a quantidade de veiculos for maior, entao menor
+				else if( getFrotaUtilizada().size() > frete2.getFrotaUtilizada().size() )
+					return -1;
+				
+				//Se a quantidade de veiculos for igual, entao igual
+				else {
+					return 0;
+				}
+			}
+		}
 	}
 
 	public static void main(String[] args) throws ParseException {

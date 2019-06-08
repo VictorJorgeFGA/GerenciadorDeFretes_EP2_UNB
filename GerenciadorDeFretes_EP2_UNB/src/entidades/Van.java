@@ -11,16 +11,6 @@ public class Van extends Veiculo {
 	//Combustivel padrao para vans
 	private static final Combustivel combustivel = Combustivel.DIESEL;
 	
-	
-//	Combustível: Diesel
-//
-//	Rendimento: 10 Km/L
-//
-//	Carga máxima: 3,5 toneladas
-//
-//	Velocidade média: 80 Km/h
-//	A cada Kg de carga, o rendimento é reduzido em 0.001 Km/L
-	
 	//Variaveis padrao para a van
 	private static final double rendimentoVan = 10,		//Rendimento de combustivel em KM/L
 								cargaMaximaVan = 3500,	//Carga maxima em Kg
@@ -28,9 +18,8 @@ public class Van extends Veiculo {
 								decaimentoVan = 0.001;	//Decaimento no rendimento do combustivel em (Km/L)/Kg
 	
 	public Van( Status estado , int veiculoID, String nome, String placa){
-		super( estado , Tipo.VAN , veiculoID, rendimentoVan, cargaMaximaVan, velMediaVan, decaimentoVan, nome, placa );
+		super( estado , Tipo.VAN , veiculoID, cargaMaximaVan, velMediaVan, nome, placa );
 	}
-	
 	
 	//Retorna o combustivel deste Veiculo, qual podendo variar entre 1 e 2.
 	@Override
@@ -42,6 +31,21 @@ public class Van extends Veiculo {
 		return combustivel;
 		
 	}//Fim do metodo getCombustivel
+
+	//Sobrescrita do método getDecaimento
+	@Override
+	public Double getDecaimento( Combustivel combustivel ){
+		return decaimentoVan;
+
+	}//Fim do metodo getDecaimento
+
+
+	//Sobrescrita do metodo getRedniemtn0o
+	@Override
+	public Double getRendimento( Combustivel combustivel ){
+		return rendimentoVan;
+
+	}//Fim do metodo getRendimento
 	
 	//Metodo main para testes unitarios
 	public static void main(String[] args) {
@@ -53,9 +57,9 @@ public class Van extends Veiculo {
 		System.out.println( m.getCombustivel(2) );
 		System.out.println( m.getCombustivel(1) );
 		System.out.println( m.getCombustivel(3) );
-		System.out.println( m.getDecaimento() );
+		System.out.println( m.getDecaimento( m.getCombustivel(1) ) );
 		System.out.println( m.getEstado() );
-		System.out.println( m.getRendimento() );
+		System.out.println( m.getRendimento( m.getCombustivel(1)) );
 		System.out.println( m.getTipo() );
 		System.out.println( m.getVeiculoID() );
 		System.out.println( m.getVelMedia() );

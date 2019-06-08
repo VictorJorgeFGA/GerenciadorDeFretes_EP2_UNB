@@ -16,7 +16,7 @@ public class Carreta extends Veiculo {
 	
 	//Construtor para veiculos do tipo Carreta
 	public Carreta( Status estado , int veiculoID, String nome, String placa ) {
-		super( estado , Tipo.CARRETA , veiculoID , rendimentoCarreta , cargaMaximaCarreta, velMediaCarreta , decaimentoCarreta, nome, placa);
+		super( estado , Tipo.CARRETA , veiculoID , cargaMaximaCarreta, velMediaCarreta , nome, placa);
 	
 	}//Fim do construtor
 	
@@ -28,11 +28,26 @@ public class Carreta extends Veiculo {
 		return combustivel;
 		
 	}//Fim do método getCombustivel
+
+	//Sobrescrita do método getDecaimento
+	@Override
+	public Double getDecaimento( Combustivel combustivel ){
+		return decaimentoCarreta;
+
+	}//Fim do método getDecaimento
+
+
+	//Sobrescrita do método getRendimento
+	@Override
+	public Double getRendimento( Combustivel combustivel ){
+		return rendimentoCarreta;
+
+	}//Fim do método getRendimento
 	
 	public static void main(String[] args) {
 		Carreta c = new Carreta( Status.LIVRE , 0, "Scannia 113h", "DCO-3421" );
 		System.out.println(c.getCargaMaxima());
-		System.out.println(c.getDecaimento());
+		System.out.println(c.getDecaimento( c.getCombustivel(1) ));
 		System.out.println(c.getVeiculoID());
 		System.out.println(c.getVelMedia());
 		System.out.println(c);

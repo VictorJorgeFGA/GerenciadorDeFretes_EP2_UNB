@@ -1,0 +1,32 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - CalculadorFrete",
+            "request": "launch",
+            "mainClass": "gerenciadorDeFretes_EP2_UNB/servicos.CalculadorFrete",
+            "projectName": "GerenciadorDeFretes_EP2_UNB"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Van",
+            "request": "launch",
+            "mainClass": "gerenciadorDeFretes_EP2_UNB/entidades.Van",
+            "projectName": "GerenciadorDeFretes_EP2_UNB"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Moto",
+            "request": "launch",
+            "mainClass": "gerenciadorDeFretes_EP2_UNB/entidades.Moto",
+            "projectName": "GerenciadorDeFretes_EP2_UNB"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Carro",
+            "request": "launch",
+            "mainClass": "gerenciadorDeFretes_EP2_UNB/entidades.Carro",
+            "projectName": "GerenciadorDeFretes_EP2_UNB"
+        }
+    ]
+}

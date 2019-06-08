@@ -2,6 +2,7 @@
  * Ultima modificação: 06/06/2019 - 13:31
  * Pendencias: NENHUMA
  */
+
 package entidades;
 
 //Inicio da declaração da classe abstrata Veiculo
@@ -9,30 +10,25 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	
 	public enum Status { RESERVADO , LIVRE };					//Enum que descreve o estado do veiculo no negócio
 	public enum Tipo { CARRETA , CARRO , VAN , MOTO };			//Enum que descreve o tipo do veiculo no negócio
-	public enum Combustivel { ALCOOL , DIESEL , GASOLINA };		//Enum que descreve o tipo de combustivel utilizado pelo Veiculo
 	
 	private Status estado;
 	private Tipo tipo;
 	
 	private Integer veiculoID;
-	private Double rendimento,
-				   cargaMaxima,
-				   velMedia,
-				   decaimento;
+	private Double cargaMaxima,
+				   velMedia;
 	
 	private String nome,
 				   placa;
 	
 	//Inicio do construtor da classe Veiculo
-	public Veiculo(Status estado, Tipo tipo, int veiculoID, double rendimento, double cargaMaxima, double velMedia, double decaimento, String nome, String placa) {
+	public Veiculo(Status estado, Tipo tipo, int veiculoID, double cargaMaxima, double velMedia, String nome, String placa) {
 		
 		this.estado = estado;
 		this.tipo = tipo;
 		this.veiculoID = veiculoID;
-		this.rendimento = rendimento;
 		this.cargaMaxima = cargaMaxima;
 		this.velMedia = velMedia;
-		this.decaimento = decaimento;
 		this.nome = nome;
 		this.placa = placa;
 		
@@ -59,11 +55,6 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 		this.estado = estado;
 	}
 	
-	//Retorna o rendimento KM/L deste veiculo
-	public final Double getRendimento() {
-		return rendimento;
-	}
-	
 	//Retorna a carga maxima suportada por este veiculo
 	public final Double getCargaMaxima() {
 		return cargaMaxima;
@@ -72,11 +63,6 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	//Retorna a velocidade media deste Veiculo
 	public final Double getVelMedia() {
 		return velMedia;
-	}
-	
-	//Retorna o decaimento da eficiencia de consumo deste veiculo
-	public final Double getDecaimento() {
-		return decaimento;
 	}
 	
 	//Retorna o nome deste Veiculo
@@ -91,6 +77,12 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	
 	//Metodo abstrato getCombustivel - Retorna o combustivel deste Veiculo, qual podendo variar entre 1 e 2.
 	public abstract Combustivel getCombustivel( int qual );
+
+	//Metodo abstrato getDecaimento - Retorna o decaimento do rendimento do combustivel
+	public abstract Double getDecaimento( Combustivel combustivel );
+
+	//Metodo abstrato getRendimento - Retorna o rendimento deste veiculo com base no combustivel referencia
+	public abstract Double getRendimento( Combustivel combustivel );
 	
 	//Sobrescrita do metodo toString
 	@Override

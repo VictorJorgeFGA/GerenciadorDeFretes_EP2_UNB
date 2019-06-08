@@ -131,7 +131,6 @@ public class BancoDeDadosPerfil {
 		for( Frete f :  myfretes )
 			System.out.println(f);
 		
-		
 	}
 
 }//Fim da declaracao da classe

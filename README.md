@@ -27,16 +27,16 @@ A tarefa não é trivial, pois leva em consideração algumas peculiaridades dos
   - A cada Kg de carga, o rendimento é reduzido em 0.001 Km/L
 - Carro
   - **Combustível**: Gasolina ou Álcool
-  - **Rendimento**: 14 Km/L
+  - **Rendimento**: 14 Km/L com gasolina, 12Km/L com álcool
   - **Carga máxima**: 360 Kg
   - **Velocidade média**: 100 Km/h
-  - A cada Kg de carga, o rendimento é reduzido em 0.025 Km/L
+  - A cada Kg de carga, o rendimento é reduzido em 0.025 Km/L com gasolina e 0.0231 Km/L com álcool
 - Moto
   - **Combustível**: Gasolina ou Álcool
-  - **Rendimento**: 50 Km/L
+  - **Rendimento**: 50 Km/L com gasolina, 43 Km/L com álcool
   - **Carga máxima**: 50 kg
   - **Velocidade média**: 110 Km/h
-  - A cada Kg de carga, o rendimento é reduzido em 0.3 Km/L
+  - A cada Kg de carga, o rendimento é reduzido em 0.3 Km/L com gasolina e 0.4 Km/L com álcool
 
 
   Os valores dos combustíveis a serem utilizados são:
@@ -62,3 +62,19 @@ Com a aposentadoria de Zé, não existem outros funcionários capazes de realiza
 - Caso não exista veículo que consiga realizar a entrega sem exceder os limites de peso e de tempo, o usuário deve ser alertado e não pode ser possível selecionar veículos para o serviço;
 - Os veículos selecionados para serviço não podem ser utilizados em outros fretes sem que o usuário os torne disponível novamente;
 - A carga deve ser entregue em apenas uma viagem, por apenas um veículo;
+
+## Critérios de correção
+
+| ITEM                                              | COMENTÁRIO                                                                                                                                                                                                                    | VALOR |
+|---------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------|
+| Cadastro de veículos e margem de lucro            | Permitir ao usuário cadastrar e atualizar a fronta de veículos e a margem de lucro da empresa de modo persistente (de acordo com os requisitos)                                                                                                             | 2     |
+| Cálculo do frete e alocação da frota              | O programa deve estar funcionando indicando os veículos mais adequados para cada demanda de frete e apresentar um resumo final de todas as demandas e como as mesmas estão sendo atendidas junto com o lucro total dos fretes (de acordo com os requisitos) | 2     |
+| Apresentação - Interface Gráfica                  | A apresentação em interface gráfica das informações ao usuário deve ser clara                                                                                                                                                                               | 1     |
+| Modelagem                                         | Referente à organização e relacionamento entre classes. Deve ser gerado/feito um diagrama do projeto                                                                                                                                                        | 1     |
+| Polimorfismo                                      | Ao menos três aplicações de Polimorfismo devem ocorrer corretamente                                                                                                                                                                                         | 1     |
+| Herança                                           | Implementar herança entre classes do projeto (Não serão contabilizadas heranças diretas de bibliotecas do Java)                                                                                                                                             | 1     |
+| Qualidade de Código                               | O código deve conter bons nomes, ser modularizado, identado e com bom desempenho                                                                                                                                                                            | 1,5   |
+| Repositório                                       | Commits frequentes e com mensagens claras, utilização correta do repositório                                                                                                                                                                                | 0,5   |
+| Total                                             |                                                                                                                                                                                                                                                             | 10    |
+| Pontuação Extra - Testes Unitários                | Será acrescido de pontuação extra o projeto que possuir, em uma de suas classes, testes unitários                                                                                                                                                           | 0,5   |
+| Pontuação Extra - Qualidade superior de interface | Interface gráfica com usabilidade e design aprimorados                                                                                                                                                                                                      | 0,5   |
