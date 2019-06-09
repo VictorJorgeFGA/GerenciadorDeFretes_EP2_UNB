@@ -6,4 +6,5 @@
  *
  */
 module gerenciadorDeFretes_EP2_UNB {
+	requires java.desktop;
 }
