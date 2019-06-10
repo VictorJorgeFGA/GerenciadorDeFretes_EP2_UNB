@@ -113,7 +113,7 @@ public class BancoDeDadosPerfil {
 	
 	//Cria um novo perfil com base nas informacoes retiradas da database
 	public Perfil getPerfil() {
-		return new Perfil( nomeUsuario , margemLucroPadrao  , frota , historicoFretes );
+		return new Perfil( nomeUsuario , margemLucroPadrao  , frota , historicoFretes , getCaminhoDataBase() );
 	}
 	
 	public static void main(String []args) {

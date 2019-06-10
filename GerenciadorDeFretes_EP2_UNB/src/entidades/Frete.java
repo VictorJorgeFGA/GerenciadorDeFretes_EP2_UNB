@@ -96,13 +96,9 @@ public class Frete implements Comparable<Frete>{
 	@Override
 	public String toString() {
 		String temp = new String("");
-		temp = "Frete realizado em " + new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format( getData() ) +
-				". Com um gasto total de R$ " + getCusto() + ", lucro total de R$ " + getLucro() + ".\nTempo gasto total: " +
-				getTempoGasto() + "horas.\nCarga transportada: " + getCarga() + " Kg.\nFrota utilizada:";
+		temp =  getCusto() + " R$, " + getLucro() + " R$. " +
+				getTempoGasto() + " horas." + getCarga();
 		
-		for( Veiculo v : getFrotaUtilizada() ) {
-			temp += "\n" + v.toString();
-		}
 		return temp;
 	}
 	

@@ -14,19 +14,20 @@ import servicos.BancoDeDadosPerfil;
 //inicio da declaração da classe
 public class Perfil {
 	
+	private String caminhoDataBase;
 	private String nomeUsuario;
 	private Double margemLucroPadrao;
 	Set<Veiculo> frota;
 	Queue<Frete> historicoFretes;
 	
 	//Construtor baseado em todas as informacoes 
-	public Perfil( String nomeUsuario , double margemLucroPadrao , Set<Veiculo> frota , Queue<Frete> historicoFretes ) {
+	public Perfil( String nomeUsuario , double margemLucroPadrao , Set<Veiculo> frota , Queue<Frete> historicoFretes , String caminhoDataBase ) {
 		
 		setNomeUsuario( nomeUsuario );
 		setMargemLucroPadrao( margemLucroPadrao );
 		setFrota( frota );
 		setHistoricoFretes( historicoFretes );
-		
+		this.caminhoDataBase = caminhoDataBase;
 	}
 	
 	//Adiciona um novo veiculo na frota de acordo com as especificacoes passadas como argumento
@@ -75,6 +76,20 @@ public class Perfil {
 		
 	}
 	
+	public void reservarVeiculo( int veiculoID ) {
+		for( Veiculo v : getFrota() ) {
+			if( v.getVeiculoID() == veiculoID )
+				v.setEstado( Status.RESERVADO );
+		}
+	}
+	
+	public void liberarVeiculo( int veiculoID ) {
+		for( Veiculo v : getFrota() ) {
+			if( v.getVeiculoID() == veiculoID )
+				v.setEstado( Status.LIVRE );
+		}
+	}
+	
 	public void setNomeUsuario( String nomeUsuario ) {
 		this.nomeUsuario = nomeUsuario;
 		
@@ -95,8 +110,18 @@ public class Perfil {
 		
 	}
 	
+	public String getCaminhoDataBase() {
+		return caminhoDataBase;
+	}
+	
+	//Adiciona este Frete ao perfil descontando todos os veiculos utilizados
 	public void adicionarFrete( Frete frete ) {
+		
 		historicoFretes.add( frete );
+		Set<Veiculo> frotaUtilizada = frete.getFrotaUtilizada();
+		for( Veiculo v : frotaUtilizada ) {
+			reservarVeiculo( v.getVeiculoID() );
+		}
 		
 	}
 	
