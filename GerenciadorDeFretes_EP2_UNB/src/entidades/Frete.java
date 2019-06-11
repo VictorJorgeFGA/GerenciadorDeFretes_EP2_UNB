@@ -96,10 +96,25 @@ public class Frete implements Comparable<Frete>{
 	@Override
 	public String toString() {
 		String temp = new String("");
-		temp =  getCusto() + " R$, " + getLucro() + " R$. " +
-				getTempoGasto() + " horas." + getCarga();
+		temp =  String.format("R$  %.2f", getCusto()) + "         " + String.format("R$  %.2f", getLucro()) + "         " +
+				String.format("%.1f ", getTempoGasto()) + " horas.";
 		
 		return temp;
+	}
+	
+	public String format() {
+		Veiculo veiculo = null;
+		for( Veiculo v : getFrotaUtilizada() ) {
+			veiculo = v;
+		}
+		
+		String formatado = "";
+		formatado = new SimpleDateFormat("dd/MM/yyyy - HH:mm:ss").format( getData() );
+		formatado += ".      " + "Carga: " + String.format("%.2f Kg", getCarga()) + ".      " + "Lucro: " + String.format("R$ %.2f", getLucro()) +
+				".      " + "Custo: " + String.format("R$ %.2f", getCusto()) + ".      " + "Tempo gasto: "
+				+ String.format("%.1f horas", getTempoGasto()) + ".      " + "Veiculo: " + veiculo.getNome() + " - Placa: " + veiculo.getPlaca();
+		
+		return formatado;
 	}
 	
 	@Override

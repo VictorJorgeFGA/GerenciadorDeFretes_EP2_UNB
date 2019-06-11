@@ -88,7 +88,7 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 	@Override
 	public String toString() {
 		
-		return "Veiculo: " + getNome() + ". Placa: " + getPlaca() + ". Do tipo " + getTipo() + ". Status na transportadora: " + getEstado() + ". ID: " + getVeiculoID();
+		return "Veiculo: " + getNome() + ". Placa: " + getPlaca() + ". Do tipo " + getTipo() + ". Status: " + getEstado() + ". ID: " + getVeiculoID();
 	}//Fim do metodo toString 
 	
 	//Sobrescrita do metodo compareTo utilizando o rendimento como base

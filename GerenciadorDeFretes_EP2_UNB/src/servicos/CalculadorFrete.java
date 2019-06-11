@@ -23,7 +23,7 @@ public class CalculadorFrete {
 	private Frete maisBarato;
 	private Frete melhorCustoBeneficio;
 
-	public CalculadorFrete(Perfil perfilReferencia, double distancia, double carga, double tempoMaximo,
+	public CalculadorFrete(Perfil perfilReferencia, double carga, double distancia, double tempoMaximo,
 			double margemLucro) {
 		setPerfilReferencia(perfilReferencia);
 		setDistancia(distancia);
@@ -34,13 +34,15 @@ public class CalculadorFrete {
 		calcularFretes();
 	}
 
-	public CalculadorFrete(Perfil perfilReferencia, double distancia, double carga, double tempoMaximo) {
+	public CalculadorFrete(Perfil perfilReferencia, double carga, double distancia, double tempoMaximo) {
+		System.out.println("To no construtor");
 		setPerfilReferencia(perfilReferencia);
 		setDistancia(distancia);
 		setCarga(carga);
 		setTempoMaximo(tempoMaximo);
 		setMargemLucro(perfilReferencia.getMargemLucroPadrao());
 
+		System.out.println("Vou calcular frete");
 		calcularFretes();
 	}
 

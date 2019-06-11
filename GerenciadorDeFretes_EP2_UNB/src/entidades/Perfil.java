@@ -4,8 +4,10 @@
  */
 package entidades;
 
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
+import java.util.TreeSet;
 
 import entidades.Veiculo.Status;
 import entidades.Veiculo.Tipo;
@@ -72,6 +74,7 @@ public class Perfil {
 	}
 	
 	public void removerVeiculo( int veiculoID ) {
+		System.out.println("To dentro da funcao");
 		frota.removeIf( x -> x.getVeiculoID() == veiculoID );
 		
 	}
@@ -123,6 +126,15 @@ public class Perfil {
 			reservarVeiculo( v.getVeiculoID() );
 		}
 		
+	}
+	
+	public void limparFrota() {
+		this.frota = new TreeSet<Veiculo>();
+	}
+	
+	public void limparHistoricoFretes() {
+		
+		this.historicoFretes = new LinkedList<Frete>();
 	}
 	
 	public Set<Veiculo> getFrota(){

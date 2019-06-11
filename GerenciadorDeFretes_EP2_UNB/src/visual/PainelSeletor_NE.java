@@ -56,4 +56,10 @@ public class PainelSeletor_NE extends JPanel{
 		else
 			return false;
 	}
+	
+	public void limparCampos() {
+		velocidade.setSelected(false);
+		menorCusto.setSelected(false);
+		custoBeneficio.setSelected(false);
+	}
 }

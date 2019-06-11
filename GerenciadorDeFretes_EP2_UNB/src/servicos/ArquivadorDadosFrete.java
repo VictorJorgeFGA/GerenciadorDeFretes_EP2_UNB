@@ -36,7 +36,7 @@ public class ArquivadorDadosFrete {
 	public ArquivadorDadosFrete( String caminho , Frete freteUnico ) {
 		this.listaFretes = new LinkedList<Frete>();
 		adicionarFrete( freteUnico );
-		
+		setCaminho( caminho );
 	}
 	
 	//Metodo para alterar o caminho da dataBase

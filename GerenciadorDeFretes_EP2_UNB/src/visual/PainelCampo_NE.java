@@ -48,6 +48,7 @@ public class PainelCampo_NE extends JPanel{
 		
 		carga = new JTextField("0" , 10);
 		carga.setToolTipText("Digite a carga em Quilos");
+
 		
 		distancia = new JTextField("0", 10);
 		distancia.setToolTipText("Digite a distancia em Km");
