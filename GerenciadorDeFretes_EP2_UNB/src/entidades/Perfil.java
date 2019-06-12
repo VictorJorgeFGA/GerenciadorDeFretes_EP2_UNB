@@ -16,6 +16,8 @@ import servicos.BancoDeDadosPerfil;
 //inicio da declaração da classe
 public class Perfil {
 	
+	boolean foiModificado;
+	
 	private String caminhoDataBase;
 	private String nomeUsuario;
 	private Double margemLucroPadrao;
@@ -25,15 +27,18 @@ public class Perfil {
 	//Construtor baseado em todas as informacoes 
 	public Perfil( String nomeUsuario , double margemLucroPadrao , Set<Veiculo> frota , Queue<Frete> historicoFretes , String caminhoDataBase ) {
 		
-		setNomeUsuario( nomeUsuario );
-		setMargemLucroPadrao( margemLucroPadrao );
-		setFrota( frota );
-		setHistoricoFretes( historicoFretes );
+		foiModificado = false;
+		this.nomeUsuario = nomeUsuario;
+		this.margemLucroPadrao = margemLucroPadrao;
+		this.frota = frota;
+		this.historicoFretes = historicoFretes;
 		this.caminhoDataBase = caminhoDataBase;
 	}
 	
 	//Adiciona um novo veiculo na frota de acordo com as especificacoes passadas como argumento
 	public void adicionarVeiculo( Tipo tipoVeiculo , String nomeVeiculo , String placaVeiculo ) {
+		
+		foiModificado = true;
 		
 		int menorIDAberto = 0;//Variavel que contera o id deste novo veiculo
 		
@@ -64,22 +69,14 @@ public class Perfil {
 		
 	}
 	
-	private void setFrota( Set<Veiculo> frota ) {
-		this.frota = frota;
-	}
-	
-	private void setHistoricoFretes( Queue<Frete> historicoFretes ) {
-		this.historicoFretes = historicoFretes;
-		
-	}
-	
 	public void removerVeiculo( int veiculoID ) {
-		System.out.println("To dentro da funcao");
+		foiModificado = true;
 		frota.removeIf( x -> x.getVeiculoID() == veiculoID );
 		
 	}
 	
 	public void reservarVeiculo( int veiculoID ) {
+		foiModificado = true;
 		for( Veiculo v : getFrota() ) {
 			if( v.getVeiculoID() == veiculoID )
 				v.setEstado( Status.RESERVADO );
@@ -87,6 +84,7 @@ public class Perfil {
 	}
 	
 	public void liberarVeiculo( int veiculoID ) {
+		foiModificado = true;
 		for( Veiculo v : getFrota() ) {
 			if( v.getVeiculoID() == veiculoID )
 				v.setEstado( Status.LIVRE );
@@ -94,6 +92,7 @@ public class Perfil {
 	}
 	
 	public void setNomeUsuario( String nomeUsuario ) {
+		foiModificado = true;
 		this.nomeUsuario = nomeUsuario;
 		
 	}
@@ -104,6 +103,7 @@ public class Perfil {
 	}
 	
 	public void setMargemLucroPadrao( double margemLucroPadrao ) {
+		foiModificado = true;
 		this.margemLucroPadrao = margemLucroPadrao;
 		
 	}
@@ -120,6 +120,7 @@ public class Perfil {
 	//Adiciona este Frete ao perfil descontando todos os veiculos utilizados
 	public void adicionarFrete( Frete frete ) {
 		
+		foiModificado = true;
 		historicoFretes.add( frete );
 		Set<Veiculo> frotaUtilizada = frete.getFrotaUtilizada();
 		for( Veiculo v : frotaUtilizada ) {
@@ -129,11 +130,14 @@ public class Perfil {
 	}
 	
 	public void limparFrota() {
+		
+		foiModificado = true;
 		this.frota = new TreeSet<Veiculo>();
 	}
 	
 	public void limparHistoricoFretes() {
 		
+		foiModificado = true;
 		this.historicoFretes = new LinkedList<Frete>();
 	}
 	
@@ -145,8 +149,41 @@ public class Perfil {
 		return historicoFretes;
 	}
 	
+	public boolean foiModificado() {
+		return foiModificado;
+	}
+	
 	@Override public String toString() {
 		return getNomeUsuario();
+	}
+	
+	//reserva os i-esimos veiculos da frota
+	public void reservarVeiculos( int[] indices ) {
+		foiModificado = true;
+		
+		int i = 0;
+		int cont = 0;
+		for( Veiculo v : getFrota() ) {
+			if( indices[i] == cont ) {
+				v.setEstado( Status.RESERVADO );
+				i++;
+			}
+			cont++;
+		}
+	}
+	
+	public void liberarVeiculos( int[] indices ) {
+		foiModificado = true;
+		
+		int i = 0;
+		int cont = 0;
+		for( Veiculo v : getFrota() ) {
+			if( indices[i] == cont ) {
+				v.setEstado( Status.LIVRE );
+				i++;
+			}
+			cont++;
+		}
 	}
 	
 	//Main para testes

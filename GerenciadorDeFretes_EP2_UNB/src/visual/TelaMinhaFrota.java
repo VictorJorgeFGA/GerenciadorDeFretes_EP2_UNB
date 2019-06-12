@@ -37,6 +37,8 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	JButton apagarVeiculo;
 	JButton help;
 	JButton adicionarVeiculo;
+	JButton reservarVeiculo;
+	JButton liberarVeiculo;
 	
 	
 	public TelaMinhaFrota( Perfil perfilReferencia ) {
@@ -82,7 +84,9 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		help.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent event ) {
 				JOptionPane.showMessageDialog(null, "Remova veículos da sua frota os selecionando na lista e\nclicando no botao remover (Lixeira)\n\n"
-						+ "Adicione novos veículos preenchendo os campos de informaçoes\ne depois clicando em adicionar (Mais)", "Help", JOptionPane.QUESTION_MESSAGE);
+						+ "Adicione novos veículos preenchendo os campos de informaçoes\ne depois clicando em adicionar (Mais)\n\n"
+						+ "Indique que veículos estão ocupados os selecionando na lista\ne clicando no botao reservar (Cadeado fechado)\n\n" 
+						+ "Indique que veículos estão livres os selecionando na lista\ne clicando no botao liberar (Cadeado aberto)", "Help", JOptionPane.QUESTION_MESSAGE);
 			}
 		});
 		help.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,10 +98,24 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		adicionarVeiculo.setToolTipText("Adiciona um novo veículo na frota com as características descritas acima");
 		adicionarVeiculo.addActionListener( new AcaoAdicao() );
 		
+		reservarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/reservaricon.png") );
+		reservarVeiculo.setHorizontalAlignment(SwingConstants.CENTER);
+		reservarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
+		reservarVeiculo.setToolTipText("Reservar veículos selecionados");
+		reservarVeiculo.addActionListener( new AcaoReservar() );
+		
+		liberarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/liberaricon.png") );
+		liberarVeiculo.setHorizontalAlignment(SwingConstants.CENTER);
+		liberarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
+		liberarVeiculo.setToolTipText("Liberar veículos selecionados");
+		liberarVeiculo.addActionListener( new AcaoLiberar() );
+		
 		
 		painelSul.add( help );
 		painelSul.add( apagarVeiculo );
 		painelSul.add( adicionarVeiculo );
+		painelSul.add(reservarVeiculo);
+		painelSul.add(liberarVeiculo);
 		
 		add( new JPanel() , BorderLayout.WEST );
 		add( new JPanel() , BorderLayout.EAST );
@@ -218,6 +236,62 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 					return false;
 				else
 					return true;
+			}
+		}
+	}
+	
+	//Declaracao da classe AcaoReservar
+	private class AcaoReservar implements ActionListener{
+		public void actionPerformed( ActionEvent event ) {
+			
+			int[] selecionados = listaVeiculos.getSelectedIndices();
+			
+			if( selecionados.length == 0 ) {
+				JOptionPane.showMessageDialog( null , "Selecione ao menos 1 veículo para reservar" , "Erro!" , JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			boolean pode = false;
+			
+			if( selecionados.length == 1 )
+				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente reservar esse veículo?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
+					== JOptionPane.YES_OPTION ? true : false;
+			
+			else if( selecionados.length > 1 )
+				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente reservar esses veículos?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
+				== JOptionPane.YES_OPTION ? true : false;
+			
+			if( pode ) {
+				perfilReferencia.reservarVeiculos( selecionados );
+				TelaMinhaFrota.this.reiniciar();
+			}
+		}
+		
+	}//FIm da classe AcaoReservar
+	
+	private class AcaoLiberar implements ActionListener{
+		public void actionPerformed( ActionEvent event ) {
+			
+			int[] selecionados = listaVeiculos.getSelectedIndices();
+			
+			if( selecionados.length == 0 ) {
+				JOptionPane.showMessageDialog( null , "Selecione ao menos 1 veículo para liberar" , "Erro!" , JOptionPane.ERROR_MESSAGE);
+				return;
+			}
+			
+			boolean pode = false;
+			
+			if( selecionados.length == 1 )
+				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente liberar esse veículo?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
+					== JOptionPane.YES_OPTION ? true : false;
+			
+			else if( selecionados.length > 1 )
+				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente liberar esses veículos?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
+				== JOptionPane.YES_OPTION ? true : false;
+			
+			if( pode ) {
+				perfilReferencia.liberarVeiculos( selecionados );
+				TelaMinhaFrota.this.reiniciar();
 			}
 		}
 	}

@@ -130,22 +130,26 @@ public class TelaAjustes extends JPanel implements Tela{
 	
 	private class AcaoApagar implements ActionListener{
 		public void actionPerformed( ActionEvent event ) {
-			try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.perfil") ) ){
+			if( JOptionPane.showConfirmDialog(TelaAjustes.this, "Realmente deseja apagar todos os dados deste perfil?\n"
+					+ "Essa ação não poderá ser desfeita", "Tem certeza disso?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
 				
-				perfilDB.write("Gerenciador de Fretes");
-				perfilDB.newLine();
-				perfilDB.write( "0.1" );
-				
-				perfilReferencia.limparFrota();
-				try( BufferedWriter frotaDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes") ) ){
-					perfilReferencia.limparHistoricoFretes();
+				try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.perfil") ) ){
+					
+					perfilDB.write("Gerenciador de Fretes");
+					perfilDB.newLine();
+					perfilDB.write( "0.1" );
+					
+					perfilReferencia.limparFrota();
+					try( BufferedWriter frotaDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes") ) ){
+						perfilReferencia.limparHistoricoFretes();
+					}
+					JOptionPane.showMessageDialog(null, "Dados apagados com sucesso!" , "Sucesso!" , JOptionPane.INFORMATION_MESSAGE);
+					
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					JOptionPane.showMessageDialog(null, "Ocorreu um erro interno durante a remoção dos dados." , "Erro" , JOptionPane.ERROR_MESSAGE);
+					e.printStackTrace();
 				}
-				JOptionPane.showMessageDialog(null, "Dados apagados com sucesso!" , "Sucesso!" , JOptionPane.INFORMATION_MESSAGE);
-				
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				JOptionPane.showMessageDialog(null, "Ocorreu um erro interno durante a remoção dos dados." , "Erro" , JOptionPane.ERROR_MESSAGE);
-				e.printStackTrace();
 			}
 		}
 	}

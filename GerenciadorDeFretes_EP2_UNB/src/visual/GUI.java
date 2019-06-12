@@ -5,13 +5,17 @@ import java.awt.CardLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import entidades.Perfil;
+import servicos.ArquivadorDadosFrota;
 import servicos.BancoDeDadosPerfil;
 
 public class GUI extends JFrame {
@@ -27,11 +31,17 @@ public class GUI extends JFrame {
 	TelaAjustes telaAjustes;
 	
 	public GUI( Perfil perfilReferencia ) {
+		super("Gerenciador de Fretes v0");
+		
 		this.perfilReferencia = perfilReferencia;
+		
 		setLayout( new BorderLayout( 10, 10 ) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
 		setSize( 700 , 600 );
 		iniciarGUI();
+		
+		this.setLocationRelativeTo(null);
+		this.addWindowListener( new ListenerJanela() );
 		setVisible(true);
 	}
 	
@@ -61,6 +71,40 @@ public class GUI extends JFrame {
 		add( barraUtilitaria , BorderLayout.WEST );
 		add( new JPanel() , BorderLayout.EAST );
 		add( areaExibicao );
+	}
+	
+	private void salvarAlteracoes() {
+		new ArquivadorDadosFrota( perfilReferencia.getCaminhoDataBase()+".frota" , perfilReferencia.getFrota() ).salvarDadosAtuais();
+	}
+	
+	private class ListenerJanela implements WindowListener{
+
+		@Override
+		public void windowOpened(WindowEvent e) {}
+
+		@Override
+		public void windowClosing(WindowEvent e) {
+			if( perfilReferencia.foiModificado() ) {
+				if( JOptionPane.showConfirmDialog(GUI.this, "Modificações foram feitas neste perfil, deseja salva-las?", "", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.INFORMATION_MESSAGE)
+						== JOptionPane.YES_OPTION )
+					salvarAlteracoes();	
+			}
+		}
+
+		@Override
+		public void windowClosed(WindowEvent e) {}
+
+		@Override
+		public void windowIconified(WindowEvent e) {}
+
+		@Override
+		public void windowDeiconified(WindowEvent e) {}
+
+		@Override
+		public void windowActivated(WindowEvent e) {}
+
+		@Override
+		public void windowDeactivated(WindowEvent e) {}
 	}
 	
 	private class BarraUtilitaria extends JPanel{
