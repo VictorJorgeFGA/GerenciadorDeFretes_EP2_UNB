@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -31,13 +32,15 @@ public class GUI extends JFrame {
 	TelaAjustes telaAjustes;
 	
 	public GUI( Perfil perfilReferencia ) {
-		super("Gerenciador de Fretes v0");
+		super("Gerenciador de Fretes v0.0");
 		
 		this.perfilReferencia = perfilReferencia;
 		
 		setLayout( new BorderLayout( 10, 10 ) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		setSize( 700 , 600 );
+		setSize( 700 , 700 );
+		this.setMinimumSize( new Dimension( 600 , 600 ) );
+		this.setMaximumSize( new Dimension( 800 , 800 ) );
 		iniciarGUI();
 		
 		this.setLocationRelativeTo(null);
@@ -85,7 +88,7 @@ public class GUI extends JFrame {
 		@Override
 		public void windowClosing(WindowEvent e) {
 			if( perfilReferencia.foiModificado() ) {
-				if( JOptionPane.showConfirmDialog(GUI.this, "Modificações foram feitas neste perfil, deseja salva-las?", "", JOptionPane.YES_NO_CANCEL_OPTION , JOptionPane.INFORMATION_MESSAGE)
+				if( JOptionPane.showConfirmDialog(GUI.this, "Modificações foram feitas neste perfil, deseja salva-las?", "", JOptionPane.YES_NO_OPTION , JOptionPane.INFORMATION_MESSAGE)
 						== JOptionPane.YES_OPTION )
 					salvarAlteracoes();	
 			}

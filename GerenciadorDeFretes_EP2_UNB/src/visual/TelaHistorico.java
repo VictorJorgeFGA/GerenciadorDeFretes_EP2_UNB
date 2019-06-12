@@ -124,6 +124,8 @@ public class TelaHistorico extends JPanel implements Tela{
 				}
 				reiniciar();
 			}
+			else
+				TelaHistorico.this.reiniciar();
 		}
 		
 		private void reiniciar() {

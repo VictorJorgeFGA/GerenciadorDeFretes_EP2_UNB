@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -15,8 +16,11 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 import entidades.Perfil;
 import entidades.Veiculo;
@@ -30,8 +34,15 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	JLabel titulo;
 	
 	JPanel painelCentral;
-	JList<String> listaVeiculos;
+	
 	PainelNovoVeiculo painelNovoVeiculo;
+	
+	JPanel painelBarra;
+	JPanel painelLista;
+	JList<String> listaVeiculos;
+	JLabel dica;
+	JButton helpBusca;
+	JTextField barraBuscas;
 	
 	JPanel painelSul;
 	JButton apagarVeiculo;
@@ -39,6 +50,9 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	JButton adicionarVeiculo;
 	JButton reservarVeiculo;
 	JButton liberarVeiculo;
+	
+	Vector<String> listaTrue;
+	Vector<String> listaFiltrada;
 	
 	
 	public TelaMinhaFrota( Perfil perfilReferencia ) {
@@ -53,21 +67,25 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		titulo = new JLabel( "Minha Frota" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/minhafrotaicon.png") , SwingConstants.LEFT );
 		titulo.setHorizontalAlignment( SwingConstants.CENTER );
 		
-		Vector<String> veiculos = new Vector<String>();
+		listaTrue = new Vector<String>();
+		listaFiltrada = new Vector<String>();
+		
 		for( Veiculo v : perfilReferencia.getFrota() ) {
-			veiculos.add( v.toString() );
+			listaTrue.add( v.toString() );
 		}
 		
 		painelCentral = new JPanel();
 		painelCentral.setLayout( new GridLayout( 2 , 1 , 10 , 10 ) );
 		
-		listaVeiculos = new JList<String>( veiculos );
+		listaVeiculos = new JList<String>( listaTrue );
 		listaVeiculos.setSelectionMode( ListSelectionModel.MULTIPLE_INTERVAL_SELECTION );
 		listaVeiculos.setToolTipText("Matenha pressionado CTRL e clique nos veículos para seleciona-los");
 		
 		painelNovoVeiculo = new PainelNovoVeiculo();
 		
-		painelCentral.add( new JScrollPane( listaVeiculos ) );
+		iniciarBarraPesquisa();
+		
+		painelCentral.add( painelLista );
 		painelCentral.add( painelNovoVeiculo );
 		
 		painelSul = new JPanel();
@@ -124,6 +142,76 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		add( titulo , BorderLayout.NORTH );
 	}
 	
+	public void iniciarBarraPesquisa() {
+		
+		painelLista = new JPanel();
+		painelLista.setLayout( new BorderLayout(10,10) );
+		painelLista.add( new JScrollPane( listaVeiculos ) , BorderLayout.CENTER );
+		
+		painelBarra = new JPanel();
+		painelBarra.setLayout( new BorderLayout(10,10) );
+		
+		dica = new JLabel( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/searchicon.png"));
+		dica.setToolTipText("Filtre sua busca!");
+		
+		helpBusca = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+		helpBusca.setToolTipText("Ajuda");
+		helpBusca.addActionListener( new ActionListener() {
+			public void actionPerformed( ActionEvent event ) {
+				JOptionPane.showMessageDialog(null, "Você pode filtrar os resultados da sua busca digitando:\nA placa do veículo, o nome do veículo, o tipo do veículo"
+						+ "\nou você pode filtrar pelo estado na transportadora: reservado ou livre." , "Guia",  JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+		
+		barraBuscas = new JTextField("");
+		barraBuscas.setToolTipText("Filtre digitando aqui!");
+		barraBuscas.getDocument().addDocumentListener( new AcaoPesquisa() );
+		
+		painelBarra.add( barraBuscas , BorderLayout.CENTER );
+		painelBarra.add( dica , BorderLayout.WEST );
+		painelBarra.add( helpBusca , BorderLayout.EAST );
+		
+		painelLista.add( painelBarra , BorderLayout.NORTH );
+	}
+	
+	private class AcaoPesquisa implements DocumentListener{
+
+		@Override
+		public void insertUpdate(DocumentEvent e) {
+			filtrar();
+		}
+
+		@Override
+		public void removeUpdate(DocumentEvent e) {
+			filtrar();
+		}
+
+		@Override
+		public void changedUpdate(DocumentEvent e) {
+			filtrar();
+		}
+		
+		public void filtrar() {
+			String filtro = barraBuscas.getText();
+			if( filtro != "" ) {
+				filtro = filtro.toLowerCase();
+				
+				listaFiltrada.clear();
+				for( int i = 0 ; i < listaTrue.size() ; i++) {
+					if( listaTrue.elementAt(i).toLowerCase().contains( filtro ) )
+						listaFiltrada.add( listaTrue.elementAt(i) );
+				}
+				reiniciar();
+			}
+			else
+				TelaMinhaFrota.this.reiniciar();
+		}
+		
+		private void reiniciar() {
+			listaVeiculos.setListData( listaFiltrada );
+		}
+	}
+	
 	@Override
 	public void exibir() {
 		
@@ -139,11 +227,11 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	@Override
 	public void reiniciar() {
 
-		Vector<String> veiculos = new Vector<String>();
+		listaTrue.clear();
 		for( Veiculo v : perfilReferencia.getFrota() ) {
-			veiculos.add( v.toString() );
+			listaTrue.add( v.toString() );
 		}
-		listaVeiculos.setListData( veiculos );
+		listaVeiculos.setListData( listaTrue );
 	}
 	
 	//Inicio da classe AcaoDelete
@@ -151,37 +239,31 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		
 		public void actionPerformed( ActionEvent event ) {
 			
-			int[] selecionados = listaVeiculos.getSelectedIndices();
-			if( selecionados.length == 0 )
+			List<String> selecionados = listaVeiculos.getSelectedValuesList();
+			if( selecionados.size() == 0 )
 				JOptionPane.showMessageDialog(null, "Selecione ao menos um veículo!" , "Erro" , JOptionPane.ERROR_MESSAGE );
 			
 			else {
 				int result = 0;
 				
-				if( selecionados.length == 1 )
+				if( selecionados.size() == 1 )
 					result = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar este veiculo?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE );
 				else
 					result = JOptionPane.showConfirmDialog(null, "Deseja realmente apagar estes veiculos?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE );
 				
 				//O usuario decidiu por remover os veiculos
 				if( result == JOptionPane.YES_OPTION ) {
-					int cont = 0,
-						i = 0;
 					Vector<Integer> idsRemovidos = new Vector<Integer>();	//Contera os IDS dos veiculos a serem removidos
-					//Descobre quais veiculos serao removidos
-					for( Veiculo v : perfilReferencia.getFrota() ) {
-						System.out.println("iteracao");
-						if( cont == selecionados[i] ) {
-							idsRemovidos.add( v.getVeiculoID() );
-							i++;
-							if( i >= selecionados.length )
-								break;
-						}
-						cont++;
-					}
 					
+					//Descobre quais veiculos serao removidos
+					for( String s : selecionados ) {
+						for( Veiculo v : perfilReferencia.getFrota() ) {
+							if( v.toString().equals( s ) )
+								idsRemovidos.add( v.getVeiculoID() );
+						}
+					}
 					//Remove os veiculos
-					for( i = 0 ; i < idsRemovidos.size() ; i++ ) {
+					for( int i = 0 ; i < idsRemovidos.size() ; i++ ) {
 						perfilReferencia.removerVeiculo( idsRemovidos.elementAt(i) );
 					}
 					
@@ -198,7 +280,7 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 			String nome = painelNovoVeiculo.getNomeVeiculo();
 			String placa = painelNovoVeiculo.getPlacaVeiculo();
 			if( nome.length() > 30 || nome.length() == 0)
-				JOptionPane.showMessageDialog(null, "O nome do veículo deve conter no máximo 30 caracteres\ne no mínimo 1 caractere", "Tamnho limite", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "O nome do veículo deve conter no máximo 30 caracteres\ne no mínimo 1 caractere", "Tamanho limite", JOptionPane.WARNING_MESSAGE);
 			else if( ! segueNormaPlaca( placa ) )
 				JOptionPane.showMessageDialog(null, "Digite a placa no formato ABC-1234", "Formato de placa inválido", JOptionPane.WARNING_MESSAGE);
 			else {
@@ -244,25 +326,30 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	private class AcaoReservar implements ActionListener{
 		public void actionPerformed( ActionEvent event ) {
 			
-			int[] selecionados = listaVeiculos.getSelectedIndices();
+			List<String> selecionados = listaVeiculos.getSelectedValuesList();
 			
-			if( selecionados.length == 0 ) {
+			if( selecionados.size() == 0 ) {
 				JOptionPane.showMessageDialog( null , "Selecione ao menos 1 veículo para reservar" , "Erro!" , JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			
 			boolean pode = false;
 			
-			if( selecionados.length == 1 )
+			if( selecionados.size() == 1 )
 				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente reservar esse veículo?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
 					== JOptionPane.YES_OPTION ? true : false;
 			
-			else if( selecionados.length > 1 )
+			else if( selecionados.size() > 1 )
 				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente reservar esses veículos?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
 				== JOptionPane.YES_OPTION ? true : false;
 			
 			if( pode ) {
-				perfilReferencia.reservarVeiculos( selecionados );
+				for( String s : selecionados ) {
+					for( Veiculo v : perfilReferencia.getFrota() ) {
+						if( v.toString().equals( s ) )
+							perfilReferencia.reservarVeiculo( v.getVeiculoID() );
+					}
+				}
 				TelaMinhaFrota.this.reiniciar();
 			}
 		}
@@ -272,25 +359,30 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	private class AcaoLiberar implements ActionListener{
 		public void actionPerformed( ActionEvent event ) {
 			
-			int[] selecionados = listaVeiculos.getSelectedIndices();
+			List<String> selecionados = listaVeiculos.getSelectedValuesList();
 			
-			if( selecionados.length == 0 ) {
+			if( selecionados.size() == 0 ) {
 				JOptionPane.showMessageDialog( null , "Selecione ao menos 1 veículo para liberar" , "Erro!" , JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 			
 			boolean pode = false;
 			
-			if( selecionados.length == 1 )
+			if( selecionados.size() == 1 )
 				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente liberar esse veículo?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
 					== JOptionPane.YES_OPTION ? true : false;
 			
-			else if( selecionados.length > 1 )
+			else if( selecionados.size() > 1 )
 				pode = JOptionPane.showConfirmDialog(null, "Deseja realmente liberar esses veículos?" , "Tem certeza?" , JOptionPane.YES_NO_OPTION ,JOptionPane.QUESTION_MESSAGE)
 				== JOptionPane.YES_OPTION ? true : false;
 			
 			if( pode ) {
-				perfilReferencia.liberarVeiculos( selecionados );
+				for( String s : selecionados ) {
+					for( Veiculo v : perfilReferencia.getFrota() ) {
+						if( v.toString().equals( s ) )
+							perfilReferencia.liberarVeiculo( v.getVeiculoID() );
+					}
+				}
 				TelaMinhaFrota.this.reiniciar();
 			}
 		}
