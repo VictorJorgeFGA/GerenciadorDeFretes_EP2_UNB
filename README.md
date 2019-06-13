@@ -16,3 +16,22 @@ A utilização do programa é simples e consiste em um passo a passo simples(que
 #### Execução do programa
 
 O programa foi desenvolvido puramente na linguagem Java. Foi utilizado o **JDK 11**. Portanto, para boa execução é recomendada a utilzação de **componentes Java devidamente atualizados**. A execução do programa pode ser feita executando o arquivo _GerenciadorDeFretes.jar_ contido na pasta GerenciadorDeFretes_EP2_UNB do projeto. Vale ressaltar que a execução só será possível se for utilizado o Java Runtime versão 55 ou superior.
+
+## Interface gráfica
+
+#### Home
+![](/GerenciadorDeFretes_EP2_UNB/images/home)
+
+#### Novo Frete
+![](/GerenciadorDeFretes_EP2_UNB/images/novofrete1)
+
+![](/GerenciadorDeFretes_EP2_UNB/images/novofrete2)
+
+#### Minha Frota
+![](/GerenciadorDeFretes_EP2_UNB/images/minhafrota)
+
+#### Histórico
+![](/GerenciadorDeFretes_EP2_UNB/images/historico)
+
+#### Ajustes
+![](/GerenciadorDeFretes_EP2_UNB/images/ajustes)
