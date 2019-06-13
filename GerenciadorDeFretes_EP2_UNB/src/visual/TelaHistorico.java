@@ -162,13 +162,13 @@ public class TelaHistorico extends JPanel implements Tela{
 	
 	
 	
-	public static void main( String[] args ) {
-//		JFrame janela = new JFrame("Teste");
-//		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-//		janela.setSize( 600 , 700 );
-//		janela.add( new TelaHistorico( new BancoDeDadosPerfil(path + "").getPerfil()) );
+//	public static void main( String[] args ) {
+////		JFrame janela = new JFrame("Teste");
+////		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+////		janela.setSize( 600 , 700 );
+////		janela.add( new TelaHistorico( new BancoDeDadosPerfil(path + "").getPerfil()) );
+////		
+////		janela.setVisible(true);
 //		
-//		janela.setVisible(true);
-		
-	}
+//	}
 }

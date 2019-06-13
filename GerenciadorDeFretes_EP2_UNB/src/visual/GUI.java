@@ -192,8 +192,8 @@ public class GUI extends JFrame {
 		}
 	}
 	
-	public static void main(String[] args) {
-		//GUI interfaceGrafica = new GUI( new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil() );
-	}
+//	public static void main(String[] args) {
+//		//GUI interfaceGrafica = new GUI( new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil() );
+//	}
 
 }

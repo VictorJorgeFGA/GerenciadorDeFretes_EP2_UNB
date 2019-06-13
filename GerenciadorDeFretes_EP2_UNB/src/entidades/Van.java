@@ -47,27 +47,27 @@ public class Van extends Veiculo {
 
 	}//Fim do metodo getRendimento
 	
-	//Metodo main para testes unitarios
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Van m = new Van( Status.LIVRE , 1, "Mercedes Sprinter", "OVN-7399" );
-		
-		System.out.println(m);
-		System.out.println( m.getCargaMaxima() );
-		System.out.println( m.getCombustivel(2) );
-		System.out.println( m.getCombustivel(1) );
-		System.out.println( m.getCombustivel(3) );
-		System.out.println( m.getDecaimento( m.getCombustivel(1) ) );
-		System.out.println( m.getEstado() );
-		System.out.println( m.getRendimento( m.getCombustivel(1)) );
-		System.out.println( m.getTipo() );
-		System.out.println( m.getVeiculoID() );
-		System.out.println( m.getVelMedia() );
-		
-		Veiculo v = m;
-		v.setEstado( Status.RESERVADO );
-		System.out.println( v.getEstado() );
-
-	}//FIm do metodo main
+//	//Metodo main para testes unitarios
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		Van m = new Van( Status.LIVRE , 1, "Mercedes Sprinter", "OVN-7399" );
+//		
+//		System.out.println(m);
+//		System.out.println( m.getCargaMaxima() );
+//		System.out.println( m.getCombustivel(2) );
+//		System.out.println( m.getCombustivel(1) );
+//		System.out.println( m.getCombustivel(3) );
+//		System.out.println( m.getDecaimento( m.getCombustivel(1) ) );
+//		System.out.println( m.getEstado() );
+//		System.out.println( m.getRendimento( m.getCombustivel(1)) );
+//		System.out.println( m.getTipo() );
+//		System.out.println( m.getVeiculoID() );
+//		System.out.println( m.getVelMedia() );
+//		
+//		Veiculo v = m;
+//		v.setEstado( Status.RESERVADO );
+//		System.out.println( v.getEstado() );
+//
+//	}//FIm do metodo main
 
 }//Fim da classe Van

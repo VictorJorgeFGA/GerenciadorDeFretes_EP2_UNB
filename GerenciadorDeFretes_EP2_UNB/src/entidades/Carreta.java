@@ -44,16 +44,16 @@ public class Carreta extends Veiculo {
 
 	}//Fim do método getRendimento
 	
-	public static void main(String[] args) {
-		Carreta c = new Carreta( Status.LIVRE , 0, "Scannia 113h", "DCO-3421" );
-		System.out.println(c.getCargaMaxima());
-		System.out.println(c.getDecaimento( c.getCombustivel(1) ));
-		System.out.println(c.getVeiculoID());
-		System.out.println(c.getVelMedia());
-		System.out.println(c);
-		
-		Veiculo v = c;
-		if( v.getCombustivel(2) == Combustivel.DIESEL )
-			System.out.println("Diesel");
-	}
+//	public static void main(String[] args) {
+//		Carreta c = new Carreta( Status.LIVRE , 0, "Scannia 113h", "DCO-3421" );
+//		System.out.println(c.getCargaMaxima());
+//		System.out.println(c.getDecaimento( c.getCombustivel(1) ));
+//		System.out.println(c.getVeiculoID());
+//		System.out.println(c.getVelMedia());
+//		System.out.println(c);
+//		
+//		Veiculo v = c;
+//		if( v.getCombustivel(2) == Combustivel.DIESEL )
+//			System.out.println("Diesel");
+//	}
 }

@@ -103,26 +103,26 @@ public class ArquivadorDadosFrota {
 	}//Fim do metodo
 
 	
-	//Metodo main para testes unitarios com banco de dados e salvamento de dados
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		
-		//Extraindo a frota ja existente no arquivo
-//		Set<Veiculo> kappa = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
-//		System.out.println(kappa.size());
+//	//Metodo main para testes unitarios com banco de dados e salvamento de dados
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
 //		
-//		boolean k = kappa.add( new Carro( Status.LIVRE , kappa.size() , "BMW M5 V10 POWER 550 Hp" , "KJK-5522" ) );	//Adicionando um novo veiculo na frota
-//		if(!k)
-//			System.out.println("What?");
+//		//Extraindo a frota ja existente no arquivo
+////		Set<Veiculo> kappa = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
+////		System.out.println(kappa.size());
+////		
+////		boolean k = kappa.add( new Carro( Status.LIVRE , kappa.size() , "BMW M5 V10 POWER 550 Hp" , "KJK-5522" ) );	//Adicionando um novo veiculo na frota
+////		if(!k)
+////			System.out.println("What?");
+////		
+////		System.out.println(kappa.size());
+////		
+////		for( Veiculo a : kappa )
+////			System.out.println(a);
+////		
+////		//Salvando a nova frota no banco de dados
+////		new ArquivadorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" , kappa ).salvarDadosAtuais();
 //		
-//		System.out.println(kappa.size());
-//		
-//		for( Veiculo a : kappa )
-//			System.out.println(a);
-//		
-//		//Salvando a nova frota no banco de dados
-//		new ArquivadorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" , kappa ).salvarDadosAtuais();
-		
-	}//Fim do metodo main
+//	}//Fim do metodo main
 
 }

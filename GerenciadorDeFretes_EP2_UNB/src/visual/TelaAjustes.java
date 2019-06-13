@@ -220,11 +220,11 @@ public class TelaAjustes extends JPanel implements Tela{
 		}
 	}
 	
-	public static void main( String[]args ) {
-//		JFrame jan= new JFrame("Treste");
-//		jan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		jan.setSize(600,500);
-//		jan.add( new TelaAjustes( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() ) );
-//		jan.setVisible(true);
-	}
+//	public static void main( String[]args ) {
+////		JFrame jan= new JFrame("Treste");
+////		jan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+////		jan.setSize(600,500);
+////		jan.add( new TelaAjustes( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() ) );
+////		jan.setVisible(true);
+//	}
 }

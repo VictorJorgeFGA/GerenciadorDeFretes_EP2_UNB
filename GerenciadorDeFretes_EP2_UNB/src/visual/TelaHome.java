@@ -67,13 +67,13 @@ public class TelaHome extends JPanel implements Tela{
 		return;
 	}
 	
-	public static void main( String[] args) {
-		JFrame tela = new JFrame("Teste");
-		tela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		tela.setSize( 400 , 300 );
-		TelaHome telaHome = new TelaHome();
-		tela.add( telaHome );
-		tela.setVisible(true);
-	}
+//	public static void main( String[] args) {
+//		JFrame tela = new JFrame("Teste");
+//		tela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//		tela.setSize( 400 , 300 );
+//		TelaHome telaHome = new TelaHome();
+//		tela.add( telaHome );
+//		tela.setVisible(true);
+//	}
 	
 }

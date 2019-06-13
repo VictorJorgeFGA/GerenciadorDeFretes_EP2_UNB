@@ -187,30 +187,30 @@ public class Perfil {
 	}
 	
 	//Main para testes
-	public static void main( String[] args ) {
-		
-		Perfil user = new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil();
-		System.out.println( user + ":\n");
-		
-		for( Veiculo v : user.getFrota() ) {
-			System.out.println(v);
-		}
-		System.out.println("\n");
-		
-		for( Frete f : user.getHistoricoFretes() ) {
-			System.out.println(f);
-		}
-		System.out.println("\n");
-		
-		user.removerVeiculo(2);
-		for( Veiculo v : user.getFrota() ) {
-			System.out.println(v);
-		}
-		user.adicionarVeiculo( Tipo.MOTO , "Yamaha FZ6", "OJO-9321");
-		System.out.println("\n");
-		for( Veiculo v : user.getFrota() ) {
-			System.out.println(v);
-		}
-	}
+//	public static void main( String[] args ) {
+//		
+//		Perfil user = new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil();
+//		System.out.println( user + ":\n");
+//		
+//		for( Veiculo v : user.getFrota() ) {
+//			System.out.println(v);
+//		}
+//		System.out.println("\n");
+//		
+//		for( Frete f : user.getHistoricoFretes() ) {
+//			System.out.println(f);
+//		}
+//		System.out.println("\n");
+//		
+//		user.removerVeiculo(2);
+//		for( Veiculo v : user.getFrota() ) {
+//			System.out.println(v);
+//		}
+//		user.adicionarVeiculo( Tipo.MOTO , "Yamaha FZ6", "OJO-9321");
+//		System.out.println("\n");
+//		for( Veiculo v : user.getFrota() ) {
+//			System.out.println(v);
+//		}
+//	}
 
 }

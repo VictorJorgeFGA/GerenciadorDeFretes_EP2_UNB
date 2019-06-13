@@ -163,9 +163,9 @@ public class Frete implements Comparable<Frete>{
 		}
 	}
 
-	public static void main(String[] args) throws ParseException {
-		
-		
-	}
+//	public static void main(String[] args) throws ParseException {
+//		
+//		
+//	}
 
 }

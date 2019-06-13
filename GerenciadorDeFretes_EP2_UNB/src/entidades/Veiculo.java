@@ -103,9 +103,9 @@ public abstract class Veiculo implements Comparable<Veiculo>{
 		
 	}//Fim do metodo compareTo
 
-	//Metodo main para teste unitario -> nerfado
-	public static void main(String[] args) {
-		
-	}//Fim do metodo main
-	
+//	//Metodo main para teste unitario -> nerfado
+//	public static void main(String[] args) {
+//		
+//	}//Fim do metodo main
+//	
 }//Fim da declaraçao da classe Veiculo

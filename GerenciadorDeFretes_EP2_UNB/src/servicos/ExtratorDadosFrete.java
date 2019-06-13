@@ -134,15 +134,15 @@ public class ExtratorDadosFrete {
 		
 	}
 	
-	//Teste unitario
-	public static void main(String [] args) {
-//		
-//		ExtratorDadosFrete ext = new ExtratorDadosFrete( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes" );
-//		
-//		Queue<Frete> fretesRealizados = ext.getExtratoFretes();
-//		for( Frete f : fretesRealizados ) {
-//			System.out.println(f + "\n");
-//		}
-	}
+//	//Teste unitario
+//	public static void main(String [] args) {
+////		
+////		ExtratorDadosFrete ext = new ExtratorDadosFrete( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes" );
+////		
+////		Queue<Frete> fretesRealizados = ext.getExtratoFretes();
+////		for( Frete f : fretesRealizados ) {
+////			System.out.println(f + "\n");
+////		}
+//	}
 	
 }//Fim da declaracao da classe

@@ -116,21 +116,21 @@ public class BancoDeDadosPerfil {
 		return new Perfil( nomeUsuario , margemLucroPadrao  , frota , historicoFretes , getCaminhoDataBase() );
 	}
 	
-	public static void main(String []args) {
-//		BancoDeDadosPerfil db = new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" );
-//		Set<Veiculo> myfrota = db.getFrota();
+//	public static void main(String []args) {
+////		BancoDeDadosPerfil db = new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" );
+////		Set<Veiculo> myfrota = db.getFrota();
+////		
+////		System.out.println(db.getNomeUsuario());
+////		System.out.println(db.getMargemLucroPadrao());
+////		
+////		for( Veiculo v : myfrota ) {
+////			System.out.println(v);
+////		}
+////		
+////		Queue<Frete> myfretes = db.getHistoricoFretes();
+////		for( Frete f :  myfretes )
+////			System.out.println(f);
 //		
-//		System.out.println(db.getNomeUsuario());
-//		System.out.println(db.getMargemLucroPadrao());
-//		
-//		for( Veiculo v : myfrota ) {
-//			System.out.println(v);
-//		}
-//		
-//		Queue<Frete> myfretes = db.getHistoricoFretes();
-//		for( Frete f :  myfretes )
-//			System.out.println(f);
-		
-	}
+//	}
 
 }//Fim da declaracao da classe

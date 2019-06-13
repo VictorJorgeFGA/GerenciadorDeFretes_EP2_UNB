@@ -66,27 +66,27 @@ public class Moto extends Veiculo {
 		}
 	}//Fim do método getRendimento
 	
-	//Metodo main para teste unitario
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Moto m = new Moto( Status.LIVRE , 1, "CG 125", "ABC-1234" );
-		System.out.println(m);
-		System.out.println( m.getCargaMaxima() );
-		System.out.println( m.getCombustivel(2) );
-		System.out.println( m.getCombustivel(1) );
-		System.out.println( m.getCombustivel(3) );
-		System.out.println( m.getDecaimento( m.getCombustivel(1) ) );
-		System.out.println( m.getDecaimento( m.getCombustivel(2) ) );
-		System.out.println( m.getEstado() );
-		System.out.println( m.getRendimento( m.getCombustivel(1) ) );
-		System.out.println( m.getTipo() );
-		System.out.println( m.getVeiculoID() );
-		System.out.println( m.getVelMedia() );
-		
-		Veiculo v = m;
-		v.setEstado( Status.RESERVADO );
-		System.out.println( v.getEstado() );
-
-	}//Fim do metodo main
+//	//Metodo main para teste unitario
+//	public static void main(String[] args) {
+//		// TODO Auto-generated method stub
+//		Moto m = new Moto( Status.LIVRE , 1, "CG 125", "ABC-1234" );
+//		System.out.println(m);
+//		System.out.println( m.getCargaMaxima() );
+//		System.out.println( m.getCombustivel(2) );
+//		System.out.println( m.getCombustivel(1) );
+//		System.out.println( m.getCombustivel(3) );
+//		System.out.println( m.getDecaimento( m.getCombustivel(1) ) );
+//		System.out.println( m.getDecaimento( m.getCombustivel(2) ) );
+//		System.out.println( m.getEstado() );
+//		System.out.println( m.getRendimento( m.getCombustivel(1) ) );
+//		System.out.println( m.getTipo() );
+//		System.out.println( m.getVeiculoID() );
+//		System.out.println( m.getVelMedia() );
+//		
+//		Veiculo v = m;
+//		v.setEstado( Status.RESERVADO );
+//		System.out.println( v.getEstado() );
+//
+//	}//Fim do metodo main
 
 }//Fim da classe Moto

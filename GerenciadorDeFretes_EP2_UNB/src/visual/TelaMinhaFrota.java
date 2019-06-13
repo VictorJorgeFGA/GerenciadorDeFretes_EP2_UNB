@@ -391,14 +391,14 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 			}
 		}
 	}
-	
-	public static void main(String[] args) {
-//		JFrame janela = new JFrame("Teste");
-//		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		janela.setSize( 600 , 700 );
-//		janela.add( new TelaMinhaFrota( new BancoDeDadosPerfil(path + "").getPerfil() ) );
-//		
-//		janela.setVisible(true);
-	}
+//	
+//	public static void main(String[] args) {
+////		JFrame janela = new JFrame("Teste");
+////		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+////		janela.setSize( 600 , 700 );
+////		janela.add( new TelaMinhaFrota( new BancoDeDadosPerfil(path + "").getPerfil() ) );
+////		
+////		janela.setVisible(true);
+//	}
 
 }

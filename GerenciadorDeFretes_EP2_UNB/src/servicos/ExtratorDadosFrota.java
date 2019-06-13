@@ -70,13 +70,13 @@ public class ExtratorDadosFrota {
 	
 	}//Fim do metodo getFrota
 	
-	//Main para teste unitario
-	public static void main(String[] args) {
-//		// TODO Auto-generated method stub
-//		Set<Veiculo> frota = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
-//
-//		for( Veiculo v : frota )
-//			System.out.println( v );
-		
-	}//Fim da Main
+//	//Main para teste unitario
+//	public static void main(String[] args) {
+////		// TODO Auto-generated method stub
+////		Set<Veiculo> frota = new ExtratorDadosFrota( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.frota" ).getFrota();
+////
+////		for( Veiculo v : frota )
+////			System.out.println( v );
+//		
+//	}//Fim da Main
 }

@@ -68,24 +68,24 @@ public class Carro extends Veiculo {
 	}//Fim do método getRendimento
 
 
-	//Inicio da main de teste unitário.
-	public static void main(String[] args) {
-		
-		// TODO Auto-generated method stub
-		Carro c = new Carro( Status.LIVRE , 0, "Fiat Uno Mille com escada", "KJP-1351" );
-		System.out.println(c);
-		System.out.println( c.getCargaMaxima() );
-		System.out.println( c.getCombustivel(1) );
-		System.out.println( c.getDecaimento( c.getCombustivel(1) ) );
-		System.out.println( c.getDecaimento( c.getCombustivel(2) ) );
-		System.out.println( c.getDecaimento( c.getCombustivel(3) ) );
-		System.out.println( c.getVeiculoID() );
-		System.out.println( c.getVelMedia() );
-		
-		Veiculo v = c;
-		v.setEstado( Status.RESERVADO );
-		System.out.println( v );
-		
-	}//Fim do método main
+//	//Inicio da main de teste unitário.
+//	public static void main(String[] args) {
+//		
+//		// TODO Auto-generated method stub
+//		Carro c = new Carro( Status.LIVRE , 0, "Fiat Uno Mille com escada", "KJP-1351" );
+//		System.out.println(c);
+//		System.out.println( c.getCargaMaxima() );
+//		System.out.println( c.getCombustivel(1) );
+//		System.out.println( c.getDecaimento( c.getCombustivel(1) ) );
+//		System.out.println( c.getDecaimento( c.getCombustivel(2) ) );
+//		System.out.println( c.getDecaimento( c.getCombustivel(3) ) );
+//		System.out.println( c.getVeiculoID() );
+//		System.out.println( c.getVelMedia() );
+//		
+//		Veiculo v = c;
+//		v.setEstado( Status.RESERVADO );
+//		System.out.println( v );
+//		
+//	}//Fim do método main
 
 }//Fim da declaração da classe carro

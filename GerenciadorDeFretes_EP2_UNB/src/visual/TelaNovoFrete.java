@@ -418,17 +418,17 @@ public class TelaNovoFrete extends JPanel implements Tela{
 		
 	}//Fim da classe VereditoNovaEntrega
 	
-	public static void main(String[] args) {
-//		JFrame janela = new JFrame("Teste");
-//		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-//		janela.setSize( 600 , 400 );
-//		
-//		TelaNovoFrete telaNovoFrete = new TelaNovoFrete( new BancoDeDadosPerfil(path + "").getPerfil() );
-//		//telaNovoFrete.reiniciar();
-//		//telaNovoFrete.exibir();
-//		janela.add( telaNovoFrete );
-//		
-//		janela.setVisible(true);
-	}
+//	public static void main(String[] args) {
+////		JFrame janela = new JFrame("Teste");
+////		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+////		janela.setSize( 600 , 400 );
+////		
+////		TelaNovoFrete telaNovoFrete = new TelaNovoFrete( new BancoDeDadosPerfil(path + "").getPerfil() );
+////		//telaNovoFrete.reiniciar();
+////		//telaNovoFrete.exibir();
+////		janela.add( telaNovoFrete );
+////		
+////		janela.setVisible(true);
+//	}
 	
 }//Fim da classe NovoFrete
