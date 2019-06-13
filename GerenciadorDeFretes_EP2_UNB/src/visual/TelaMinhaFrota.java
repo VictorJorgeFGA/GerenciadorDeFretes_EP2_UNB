@@ -232,6 +232,7 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 			listaTrue.add( v.toString() );
 		}
 		listaVeiculos.setListData( listaTrue );
+		barraBuscas.setText("");
 	}
 	
 	//Inicio da classe AcaoDelete

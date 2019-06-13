@@ -95,9 +95,14 @@ public class Frete implements Comparable<Frete>{
 	//Sobrescrita do metodo toString para melhor debug
 	@Override
 	public String toString() {
+		Veiculo veiculo = null;
+		for( Veiculo v : getFrotaUtilizada() ) {
+			veiculo = v;
+		}
+		
 		String temp = new String("");
 		temp =  String.format("R$  %.2f", getCusto()) + "         " + String.format("R$  %.2f", getLucro()) + "         " +
-				String.format("%.1f ", getTempoGasto()) + " horas.";
+				String.format("%.1f ", getTempoGasto()) + " horas." + "        " + veiculo.getNome() + " - Placa: " + veiculo.getPlaca();
 		
 		return temp;
 	}

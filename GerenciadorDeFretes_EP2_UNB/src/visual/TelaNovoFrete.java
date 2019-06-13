@@ -88,7 +88,10 @@ public class TelaNovoFrete extends JPanel implements Tela{
 		private JLabel titulo;
 		
 		private JPanel painelBaixo;
+		
+		//private JPanel painelBotoes;
 		private JButton go;
+		private JButton help;
 		
 		private PainelCampo_NE painelCampo;
 		private PainelSeletor_NE painelSeletor;
@@ -114,17 +117,34 @@ public class TelaNovoFrete extends JPanel implements Tela{
 			
 			
 			painelBaixo = new JPanel();
-			painelBaixo.setLayout( new GridLayout(1,3,10,10) );
-			painelBaixo.add( new JPanel() );
+			painelBaixo.setLayout( new FlowLayout() );
 			
 			go = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/goicon.png"));
 			go.setRolloverIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/gorollovericon.png") );
 			go.addActionListener( new CalcularInput() );
 			go.setToolTipText("Calcula o frete");
 			go.setVisible(true);
-			go.setMaximumSize( new Dimension( 100,100 ));
+			go.setHorizontalAlignment( SwingConstants.CENTER );
+			go.setVerticalAlignment( SwingConstants.CENTER );
+			
+			help = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+			help.setToolTipText("Ajuda");
+			help.setHorizontalAlignment( SwingConstants.CENTER );
+			help.setVerticalAlignment( SwingConstants.CENTER );
+			help.addActionListener( new ActionListener() {
+				public void actionPerformed( ActionEvent event ) {
+					JOptionPane.showMessageDialog(null, "Diremos a você a melhor opção do momento!\n"
+														+ "Digite a carga a ser transportada (em quilos),\n"
+														+ "a distância até o destino da entrega (em Km)\n"
+														+ "e o tempo que você dispõe para realizar essa entrega.\n\n"
+														+ "Marque as opções desejadas. Você pode marcar mais de uma.\n"
+														+ "\tMostraremos todas!" , "Ajuda", JOptionPane.INFORMATION_MESSAGE);
+				}
+			});
+			
+			
 			painelBaixo.add( go );
-			painelBaixo.add( new JPanel() );
+			painelBaixo.add( help );
 			
 			
 			painelCampo.setVisible(true);
@@ -156,8 +176,14 @@ public class TelaNovoFrete extends JPanel implements Tela{
 						if( painelSeletor.isVelocidade() || painelSeletor.isMenorCusto() || painelSeletor.isCustoBeneficio() ) {
 							calcularFrete( carga , distancia , prazo , painelSeletor.isVelocidade() , painelSeletor.isMenorCusto() , painelSeletor.isCustoBeneficio() );
 							ocultar();
-							campoInferior.inserirDadosFretes();
-							campoInferior.exibir();
+							
+							//Se existem dados a serem mostrados
+							if( campoInferior.inserirDadosFretes() )
+								campoInferior.exibir();
+							
+							//Se nao existem dados a serem mostrados
+							else
+								TelaNovoFrete.this.reiniciar();
 						}
 						else
 							JOptionPane.showMessageDialog(null, "Selecione pelo menos um tipo de frete" , "Nada para calcular" , JOptionPane.ERROR_MESSAGE);
@@ -278,7 +304,7 @@ public class TelaNovoFrete extends JPanel implements Tela{
 			setVisible(false);
 		}
 		
-		public void inserirDadosFretes( ) {
+		public boolean inserirDadosFretes( ) {
 			String [] dados = new String[3];
 			if( freteMaisRapido != null )
 				dados[0] = freteMaisRapido.toString();
@@ -295,7 +321,13 @@ public class TelaNovoFrete extends JPanel implements Tela{
 			else
 				dados[2] = "";
 			
+			if( freteMaisRapido == null && freteMaisBarato == null && freteCustoBeneficio == null ) {
+				JOptionPane.showMessageDialog(null, "Infelizmente não existe nenhum veículo livre na frota que\nconsiga realizar esta entrega :(", "Ação impossível", JOptionPane.WARNING_MESSAGE);
+				return false;
+			}
+			
 			painelLista.setDadosLista( dados );
+			return true;
 		}
 
 		//Por default fica oculto

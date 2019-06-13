@@ -29,9 +29,10 @@ public class TelaHome extends JPanel implements Tela{
 	}
 	
 	public void iniciarPaineis() {
-		msgBemVindo = new JLabel( "Bem Vindo!" );
+		msgBemVindo = new JLabel( "Bem Vindo!" , new  ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/bemvindoicon.png") , SwingConstants.CENTER );
 		msgBemVindo.setHorizontalAlignment( SwingConstants.CENTER );
 		msgBemVindo.setHorizontalTextPosition( SwingConstants.CENTER );
+		msgBemVindo.setVerticalTextPosition( SwingConstants.BOTTOM );
 		
 		msgNovoFrete = new JLabel( "Faça fretes inteligentes!" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgnovofreteicon.png") , SwingConstants.LEFT );
 		

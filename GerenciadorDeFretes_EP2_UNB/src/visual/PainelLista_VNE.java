@@ -50,17 +50,18 @@ public class PainelLista_VNE extends JPanel{
 		add( new JScrollPane( listaFretes ) , BorderLayout.CENTER );
 		
 		painelNomes = new JPanel();
-		painelNomes.setLayout( new GridLayout( 1 , 4 , 5 , 5 ) );
+		painelNomes.setLayout( new GridLayout( 1 , 5 , 5 , 5 ) );
 		custo = new JLabel("Custo (R$)");
 		custo.setHorizontalAlignment( SwingConstants.CENTER );
 		lucro = new JLabel("Lucro (R$)");
 		lucro.setHorizontalAlignment( SwingConstants.CENTER );
-		tempoGasto = new JLabel( "Tempo gasto (Hrs)" );
+		tempoGasto = new JLabel( "Tempo gasto" );
 		tempoGasto.setHorizontalAlignment( SwingConstants.CENTER );
 		painelNomes.add( new JPanel() );
 		painelNomes.add(custo);
 		painelNomes.add(lucro);
 		painelNomes.add(tempoGasto);
+		painelNomes.add( new JLabel("Veiculo") );
 		painelNomes.setVisible(true);
 		
 		add(painelNomes , BorderLayout.NORTH);
