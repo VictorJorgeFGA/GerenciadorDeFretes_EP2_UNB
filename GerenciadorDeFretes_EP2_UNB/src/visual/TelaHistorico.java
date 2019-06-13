@@ -3,6 +3,7 @@ package visual;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.Vector;
 
 import javax.swing.ImageIcon;
@@ -24,20 +25,22 @@ import servicos.BancoDeDadosPerfil;
 
 public class TelaHistorico extends JPanel implements Tela{
 
-	Perfil perfilReferencia;
+	private final String path = new File("").getAbsolutePath() + "/db/";
 	
-	JLabel titulo;
-	JList<String> listaFretes;
+	private Perfil perfilReferencia;
 	
-	JPanel painelFiltro;
-	JLabel dica;
-	JTextField barraBuscas;
-	JButton help;
+	private JLabel titulo;
+	private JList<String> listaFretes;
 	
-	JPanel painelCentral;
+	private JPanel painelFiltro;
+	private JLabel dica;
+	private JTextField barraBuscas;
+	private JButton help;
 	
-	Vector<String> listaFiltrada;
-	Vector<String> listaTrue;
+	private JPanel painelCentral;
+	
+	private Vector<String> listaFiltrada;
+	private Vector<String> listaTrue;
 	
 	public TelaHistorico( Perfil perfilReferencia ) {
 		this.perfilReferencia = perfilReferencia;
@@ -48,7 +51,7 @@ public class TelaHistorico extends JPanel implements Tela{
 	
 	private void iniciarCampos() {
 		
-		titulo = new JLabel("Historico", new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/historicoicon.png") , SwingConstants.LEFT);
+		titulo = new JLabel("Historico", new ImageIcon(path + "historicoicon.png") , SwingConstants.LEFT);
 		titulo.setHorizontalAlignment(SwingConstants.HORIZONTAL);
 		
 		listaFiltrada = new Vector<String>();
@@ -62,10 +65,10 @@ public class TelaHistorico extends JPanel implements Tela{
 		painelFiltro = new JPanel();
 		painelFiltro.setLayout( new BorderLayout(10,10) );
 		
-		dica = new JLabel( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/searchicon.png") );
+		dica = new JLabel( new ImageIcon(path + "searchicon.png") );
 		dica.setToolTipText("Filtre sua busca!");
 		
-		help = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+		help = new JButton( new ImageIcon(path + "helpicon.png") );
 		help.setToolTipText("Ajuda");
 		help.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent event ) {
@@ -160,12 +163,12 @@ public class TelaHistorico extends JPanel implements Tela{
 	
 	
 	public static void main( String[] args ) {
-		JFrame janela = new JFrame("Teste");
-		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		janela.setSize( 600 , 700 );
-		janela.add( new TelaHistorico( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil()) );
-		
-		janela.setVisible(true);
+//		JFrame janela = new JFrame("Teste");
+//		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//		janela.setSize( 600 , 700 );
+//		janela.add( new TelaHistorico( new BancoDeDadosPerfil(path + "").getPerfil()) );
+//		
+//		janela.setVisible(true);
 		
 	}
 }

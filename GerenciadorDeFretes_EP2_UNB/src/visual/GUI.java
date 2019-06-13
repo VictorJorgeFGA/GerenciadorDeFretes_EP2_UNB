@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -21,6 +22,8 @@ import servicos.BancoDeDadosPerfil;
 
 public class GUI extends JFrame {
 
+	private final String path = new File("").getAbsolutePath() + "/db/";
+	
 	Perfil perfilReferencia;
 	
 	JPanel areaExibicao;
@@ -126,23 +129,23 @@ public class GUI extends JFrame {
 		public void iniciarBotoes() {
 			EscutadorBotao listener = new EscutadorBotao();
 			
-			home = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/homeicon.png") );
+			home = new JButton( new ImageIcon( path + "homeicon.png") );
 			home.setToolTipText("Home");
 			home.addActionListener(listener);
 			
-			novoFrete = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/novofreteicon.png") );
+			novoFrete = new JButton( new ImageIcon( path +  "novofreteicon.png") );
 			novoFrete.setToolTipText("Novo Frete");
 			novoFrete.addActionListener(listener);
 			
-			minhaFrota = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/minhafrotaicon.png") );
+			minhaFrota = new JButton( new ImageIcon( path +  "minhafrotaicon.png") );
 			minhaFrota.setToolTipText( "Minha Frota" );
 			minhaFrota.addActionListener(listener);
 			
-			historico = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/historicoicon.png") );
+			historico = new JButton( new ImageIcon( path +  "historicoicon.png") );
 			historico.setToolTipText("Historico de fretes");
 			historico.addActionListener(listener);
 			
-			ajustes = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/ajustesicon.png") );
+			ajustes = new JButton( new ImageIcon( path + "ajustesicon.png") );
 			ajustes.setToolTipText("Ajustes");
 			ajustes.addActionListener(listener);
 			
@@ -190,7 +193,7 @@ public class GUI extends JFrame {
 	}
 	
 	public static void main(String[] args) {
-		GUI interfaceGrafica = new GUI( new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil() );
+		//GUI interfaceGrafica = new GUI( new BancoDeDadosPerfil( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/" ).getPerfil() );
 	}
 
 }

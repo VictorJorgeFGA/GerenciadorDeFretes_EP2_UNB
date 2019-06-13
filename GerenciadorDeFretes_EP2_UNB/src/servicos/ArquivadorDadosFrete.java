@@ -140,18 +140,18 @@ public class ArquivadorDadosFrete {
 	}
 
 	public static void main(String[] args) {
-		
-		Set<Veiculo> frotaUtilizada = new TreeSet<>();
-		frotaUtilizada.add( new Carro( Status.RESERVADO , 1 , "Subaru WRX STI 2011 Hatch" , "JGP-1972" ) );
-		frotaUtilizada.add( new Carro( Status.RESERVADO , 2 , "BMW M5 V10 Sport" , "OVP-2343" ) );
-		
-		Frete f1 = new Frete( frotaUtilizada , 300 , 40 , 30 , 20 , new Date() );
-		Queue<Frete> fretes = new LinkedList<Frete>();
-		fretes.add(f1);
-		fretes.add(f1);
-		
-		
-		new ArquivadorDadosFrete( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes" , fretes ).salvarDadosAtuais();;
+//		
+//		Set<Veiculo> frotaUtilizada = new TreeSet<>();
+//		frotaUtilizada.add( new Carro( Status.RESERVADO , 1 , "Subaru WRX STI 2011 Hatch" , "JGP-1972" ) );
+//		frotaUtilizada.add( new Carro( Status.RESERVADO , 2 , "BMW M5 V10 Sport" , "OVP-2343" ) );
+//		
+//		Frete f1 = new Frete( frotaUtilizada , 300 , 40 , 30 , 20 , new Date() );
+//		Queue<Frete> fretes = new LinkedList<Frete>();
+//		fretes.add(f1);
+//		fretes.add(f1);
+//		
+//		
+//		new ArquivadorDadosFrete( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes" , fretes ).salvarDadosAtuais();;
 	}
 
 }

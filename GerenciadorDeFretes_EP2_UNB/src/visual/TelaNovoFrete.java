@@ -1,12 +1,12 @@
 package visual;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -23,13 +23,15 @@ import servicos.BancoDeDadosPerfil;
 import servicos.CalculadorFrete;
 
 public class TelaNovoFrete extends JPanel implements Tela{
+	
+	private final String path = new File("").getAbsolutePath() + "/db/";
 
-	Perfil perfilReferencia;
+	private Perfil perfilReferencia;
 	
-	NovaEntrega campoSuperior;
-	VereditoNovaEntrega campoInferior;
+	private NovaEntrega campoSuperior;
+	private VereditoNovaEntrega campoInferior;
 	
-	Frete freteMaisRapido,		// _1
+	private Frete freteMaisRapido,		// _1
 		  freteMaisBarato,		// _2
 		  freteCustoBeneficio;	// _3
 	
@@ -104,13 +106,15 @@ public class TelaNovoFrete extends JPanel implements Tela{
 		
 		//Declaracao do metodo iniciarCampos
 		private void iniciarCampos() {
+			System.out.println( new File("").getAbsolutePath());
+			
 			FlowLayout layout = new FlowLayout();
 			painelCampo = new PainelCampo_NE( );
 			painelSeletor = new PainelSeletor_NE( layout );
 			
 			titulo = new JLabel("Novo Frete");
 			titulo.setFont( new Font( "Courier" , Font.PLAIN , 14 ) );
-			titulo.setIcon( new ImageIcon( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/freteicon.png" ) );
+			titulo.setIcon( new ImageIcon( path + "freteicon.png" ) );
 			titulo.setHorizontalAlignment( SwingConstants.CENTER );
 			titulo.setVerticalAlignment( SwingConstants.CENTER );
 			titulo.setVisible(true);
@@ -119,15 +123,15 @@ public class TelaNovoFrete extends JPanel implements Tela{
 			painelBaixo = new JPanel();
 			painelBaixo.setLayout( new FlowLayout() );
 			
-			go = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/goicon.png"));
-			go.setRolloverIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/gorollovericon.png") );
+			go = new JButton( new ImageIcon(path + "goicon.png"));
+			go.setRolloverIcon( new ImageIcon(path + "gorollovericon.png") );
 			go.addActionListener( new CalcularInput() );
 			go.setToolTipText("Calcula o frete");
 			go.setVisible(true);
 			go.setHorizontalAlignment( SwingConstants.CENTER );
 			go.setVerticalAlignment( SwingConstants.CENTER );
 			
-			help = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+			help = new JButton( new ImageIcon(path + "helpicon.png") );
 			help.setToolTipText("Ajuda");
 			help.setHorizontalAlignment( SwingConstants.CENTER );
 			help.setVerticalAlignment( SwingConstants.CENTER );
@@ -351,15 +355,15 @@ public class TelaNovoFrete extends JPanel implements Tela{
 			
 			public void iniciarBotoes() {
 				
-				confirmar = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/goicon.png") );
+				confirmar = new JButton( new ImageIcon(path + "goicon.png") );
 				confirmar.setToolTipText("Confirma o frete selecionado");
-				confirmar.setRolloverIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/gorollovericon.png") );
+				confirmar.setRolloverIcon( new ImageIcon(path + "gorollovericon.png") );
 				confirmar.setVisible(true);
 				
 				EscutadorBotao escutador = new EscutadorBotao();
 				confirmar.addActionListener( escutador );
 				
-				cancelar = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/cancelaricon.png") );
+				cancelar = new JButton( new ImageIcon(path + "cancelaricon.png") );
 				cancelar.setToolTipText("Cancela a adição de novo frete");
 				cancelar.setVisible(true);
 				cancelar.addActionListener( escutador );
@@ -415,16 +419,16 @@ public class TelaNovoFrete extends JPanel implements Tela{
 	}//Fim da classe VereditoNovaEntrega
 	
 	public static void main(String[] args) {
-		JFrame janela = new JFrame("Teste");
-		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
-		janela.setSize( 600 , 400 );
-		
-		TelaNovoFrete telaNovoFrete = new TelaNovoFrete( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() );
-		//telaNovoFrete.reiniciar();
-		//telaNovoFrete.exibir();
-		janela.add( telaNovoFrete );
-		
-		janela.setVisible(true);
+//		JFrame janela = new JFrame("Teste");
+//		janela.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+//		janela.setSize( 600 , 400 );
+//		
+//		TelaNovoFrete telaNovoFrete = new TelaNovoFrete( new BancoDeDadosPerfil(path + "").getPerfil() );
+//		//telaNovoFrete.reiniciar();
+//		//telaNovoFrete.exibir();
+//		janela.add( telaNovoFrete );
+//		
+//		janela.setVisible(true);
 	}
 	
 }//Fim da classe NovoFrete

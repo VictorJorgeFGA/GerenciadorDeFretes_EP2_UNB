@@ -6,6 +6,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -22,22 +23,24 @@ import entidades.Perfil;
 import servicos.BancoDeDadosPerfil;
 
 public class TelaAjustes extends JPanel implements Tela{
+	
+	private final String path = new File("").getAbsolutePath() + "/db/";
 
-	Perfil perfilReferencia;
+	private Perfil perfilReferencia;
 	
-	JLabel titulo;
-	JPanel painelCentral;
+	private JLabel titulo;
+	private JPanel painelCentral;
 	
-	JPanel painelCampos;
-	JLabel nomePerfil;
-	JLabel margemLucro;
-	JTextField campoNomePerfil;
-	JTextField campoMargemLucro;
+	private JPanel painelCampos;
+	private JLabel nomePerfil;
+	private JLabel margemLucro;
+	private JTextField campoNomePerfil;
+	private JTextField campoMargemLucro;
 	
-	JPanel painelBotoes;
-	JButton apagarTudo;
-	JButton salvar;
-	JButton help;
+	private JPanel painelBotoes;
+	private JButton apagarTudo;
+	private JButton salvar;
+	private JButton help;
 	
 	public TelaAjustes( Perfil perfilReferencia ) {
 		this.perfilReferencia = perfilReferencia;
@@ -47,7 +50,7 @@ public class TelaAjustes extends JPanel implements Tela{
 	}
 	
 	public void iniciarCampos() {
-		titulo = new JLabel( "Ajustes", new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgajustesicon.png") , SwingConstants.LEFT );
+		titulo = new JLabel( "Ajustes", new ImageIcon( path + "msgajustesicon.png") , SwingConstants.LEFT );
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setVerticalAlignment( SwingConstants.CENTER );
 		
@@ -77,19 +80,19 @@ public class TelaAjustes extends JPanel implements Tela{
 		painelBotoes = new JPanel();
 		painelBotoes.setLayout( new FlowLayout() );
 		
-		apagarTudo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/removericon.png") );
+		apagarTudo = new JButton( new ImageIcon( path + "removericon.png") );
 		apagarTudo.setToolTipText("Apaga todas as informaçoes deste Perfil");
 		apagarTudo.setHorizontalAlignment( SwingConstants.CENTER );
 		apagarTudo.setVerticalAlignment( SwingConstants.CENTER );
 		apagarTudo.addActionListener( new AcaoApagar() );
 		
-		salvar = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/salvaricon.png") );
+		salvar = new JButton( new ImageIcon( path + "salvaricon.png") );
 		salvar.setToolTipText("Salva as informações inseridas acima");
 		salvar.setHorizontalAlignment( SwingConstants.CENTER );
 		salvar.setVerticalAlignment(SwingConstants.CENTER);
 		salvar.addActionListener( new AcaoSalvar() );
 		
-		help = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+		help = new JButton( new ImageIcon( path + "helpicon.png") );
 		help.setToolTipText("Guia");
 		help.setHorizontalAlignment(SwingConstants.CENTER);
 		help.setVerticalAlignment(SwingConstants.CENTER);
@@ -133,14 +136,14 @@ public class TelaAjustes extends JPanel implements Tela{
 			if( JOptionPane.showConfirmDialog(TelaAjustes.this, "Realmente deseja apagar todos os dados deste perfil?\n"
 					+ "Essa ação não poderá ser desfeita", "Tem certeza disso?", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
 				
-				try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.perfil") ) ){
+				try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter( path + ".perfil") ) ){
 					
 					perfilDB.write("Gerenciador de Fretes");
 					perfilDB.newLine();
 					perfilDB.write( "0.1" );
 					
 					perfilReferencia.limparFrota();
-					try( BufferedWriter frotaDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.fretes") ) ){
+					try( BufferedWriter frotaDB = new BufferedWriter( new FileWriter( path + ".fretes") ) ){
 						perfilReferencia.limparHistoricoFretes();
 					}
 					JOptionPane.showMessageDialog(null, "Dados apagados com sucesso!" , "Sucesso!" , JOptionPane.INFORMATION_MESSAGE);
@@ -163,7 +166,7 @@ public class TelaAjustes extends JPanel implements Tela{
 				JOptionPane.showMessageDialog(null, "Digite apenas números válidos para margem de lucro" , "Erro de escrita" , JOptionPane.ERROR_MESSAGE);
 			}
 			else {
-				try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/.perfil") ) ){
+				try( BufferedWriter perfilDB = new BufferedWriter( new FileWriter( path + ".perfil") ) ){
 					
 					double lucroDecimal = Double.parseDouble(margemLucro) / 100;
 					perfilDB.write(nome);
@@ -218,10 +221,10 @@ public class TelaAjustes extends JPanel implements Tela{
 	}
 	
 	public static void main( String[]args ) {
-		JFrame jan= new JFrame("Treste");
-		jan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		jan.setSize(600,500);
-		jan.add( new TelaAjustes( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() ) );
-		jan.setVisible(true);
+//		JFrame jan= new JFrame("Treste");
+//		jan.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		jan.setSize(600,500);
+//		jan.add( new TelaAjustes( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() ) );
+//		jan.setVisible(true);
 	}
 }

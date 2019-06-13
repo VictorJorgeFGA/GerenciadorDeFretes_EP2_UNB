@@ -1,6 +1,7 @@
 package visual;
 
 import java.awt.GridLayout;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,12 +11,14 @@ import javax.swing.SwingConstants;
 
 public class PainelCampo_NE extends JPanel{
 	
-	JLabel cargaImg;
-	JLabel distanciaImg;
-	JLabel prazoImg;
-	JTextField carga;
-	JTextField distancia;
-	JTextField prazo;
+	private final String path = new File("").getAbsolutePath() + "/db/";
+	
+	private JLabel cargaImg;
+	private JLabel distanciaImg;
+	private JLabel prazoImg;
+	private JTextField carga;
+	private JTextField distancia;
+	private JTextField prazo;
 	
 	public PainelCampo_NE(  ) {
 		setLayout( new GridLayout(2,3,5,5) );
@@ -27,21 +30,21 @@ public class PainelCampo_NE extends JPanel{
 		
 		cargaImg = new JLabel( );
 		cargaImg.setHorizontalAlignment(SwingConstants.CENTER);
-		cargaImg.setIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/cargaicon.png"));
+		cargaImg.setIcon( new ImageIcon( path + "cargaicon.png"));
 		cargaImg.setHorizontalTextPosition(SwingConstants.CENTER);
 		cargaImg.setVerticalTextPosition( SwingConstants.BOTTOM );
 		cargaImg.setText("Carga (Kg)");
 		
 		distanciaImg = new JLabel();
 		distanciaImg.setHorizontalAlignment(SwingConstants.CENTER);
-		distanciaImg.setIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/distanciaicon.png") );
+		distanciaImg.setIcon( new ImageIcon( path + "distanciaicon.png") );
 		distanciaImg.setHorizontalTextPosition(SwingConstants.CENTER);
 		distanciaImg.setVerticalTextPosition( SwingConstants.BOTTOM );
 		distanciaImg.setText("Distância (Km)");
 		
 		prazoImg = new JLabel();
 		prazoImg.setHorizontalAlignment(SwingConstants.CENTER);
-		prazoImg.setIcon( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/prazoicon.png") );
+		prazoImg.setIcon( new ImageIcon( path + "prazoicon.png") );
 		prazoImg.setHorizontalTextPosition(SwingConstants.CENTER);
 		prazoImg.setVerticalTextPosition( SwingConstants.BOTTOM );
 		prazoImg.setText("Prazo (Hrs)");

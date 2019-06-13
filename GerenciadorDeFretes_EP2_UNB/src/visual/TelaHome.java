@@ -7,6 +7,7 @@
 package visual;
 
 import java.awt.GridLayout;
+import java.io.File;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -29,18 +30,20 @@ public class TelaHome extends JPanel implements Tela{
 	}
 	
 	public void iniciarPaineis() {
-		msgBemVindo = new JLabel( "Bem Vindo!" , new  ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/bemvindoicon.png") , SwingConstants.CENTER );
+		String path = new File("").getAbsolutePath() + "/db/";
+		
+		msgBemVindo = new JLabel( "Bem Vindo!" , new  ImageIcon( path +  "bemvindoicon.png") , SwingConstants.CENTER );
 		msgBemVindo.setHorizontalAlignment( SwingConstants.CENTER );
 		msgBemVindo.setHorizontalTextPosition( SwingConstants.CENTER );
 		msgBemVindo.setVerticalTextPosition( SwingConstants.BOTTOM );
 		
-		msgNovoFrete = new JLabel( "Faça fretes inteligentes!" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgnovofreteicon.png") , SwingConstants.LEFT );
+		msgNovoFrete = new JLabel( "Faça fretes inteligentes!" , new ImageIcon( path + "msgnovofreteicon.png") , SwingConstants.LEFT );
 		
-		msgFrota = new JLabel("Gerencie sua frota de veículos" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgfrotaicon.png") , SwingConstants.LEFT );
+		msgFrota = new JLabel("Gerencie sua frota de veículos" , new ImageIcon( path + "msgfrotaicon.png") , SwingConstants.LEFT );
 		
-		msgHistorico = new JLabel("Veja suas atividades passadas", new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msghistoricoicon.png"), SwingConstants.LEFT);
+		msgHistorico = new JLabel("Veja suas atividades passadas", new ImageIcon( path +  "msghistoricoicon.png"), SwingConstants.LEFT);
 		
-		msgAjustes = new JLabel("Ajuste tudo de acordo com suas necessidades!" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgajustesicon.png") , SwingConstants.LEFT);
+		msgAjustes = new JLabel("Ajuste tudo de acordo com suas necessidades!" , new ImageIcon( path +  "msgajustesicon.png") , SwingConstants.LEFT);
 		
 		add( msgBemVindo );
 		add( msgNovoFrete );

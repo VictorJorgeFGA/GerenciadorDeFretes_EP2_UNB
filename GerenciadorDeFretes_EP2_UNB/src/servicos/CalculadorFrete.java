@@ -179,11 +179,11 @@ public class CalculadorFrete {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
-		CalculadorFrete sugestaoFrete = new CalculadorFrete( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() , 300 , 500 , 30 );
-		System.out.println( "Mais rapido\n" + sugestaoFrete.getMaisRapido() );
-		System.out.println("\nMais barato\n" + sugestaoFrete.getMaisBarato());
-		System.out.println("\nMelhor custo beneficio\n" + sugestaoFrete.getMelhorCustoBeneficio());
+//
+//		CalculadorFrete sugestaoFrete = new CalculadorFrete( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() , 300 , 500 , 30 );
+//		System.out.println( "Mais rapido\n" + sugestaoFrete.getMaisRapido() );
+//		System.out.println("\nMais barato\n" + sugestaoFrete.getMaisBarato());
+//		System.out.println("\nMelhor custo beneficio\n" + sugestaoFrete.getMelhorCustoBeneficio());
 	}
 
 }

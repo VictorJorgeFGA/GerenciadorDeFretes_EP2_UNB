@@ -5,6 +5,7 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
 import java.util.Vector;
 
@@ -29,30 +30,32 @@ import servicos.BancoDeDadosPerfil;
 
 public class TelaMinhaFrota extends JPanel implements Tela{
 
-	Perfil perfilReferencia;
+	private final String path = new File("").getAbsolutePath() + "/db/";
 	
-	JLabel titulo;
+	private Perfil perfilReferencia;
 	
-	JPanel painelCentral;
+	private JLabel titulo;
 	
-	PainelNovoVeiculo painelNovoVeiculo;
+	private JPanel painelCentral;
 	
-	JPanel painelBarra;
-	JPanel painelLista;
-	JList<String> listaVeiculos;
-	JLabel dica;
-	JButton helpBusca;
-	JTextField barraBuscas;
+	private PainelNovoVeiculo painelNovoVeiculo;
 	
-	JPanel painelSul;
-	JButton apagarVeiculo;
-	JButton help;
-	JButton adicionarVeiculo;
-	JButton reservarVeiculo;
-	JButton liberarVeiculo;
+	private JPanel painelBarra;
+	private JPanel painelLista;
+	private JList<String> listaVeiculos;
+	private JLabel dica;
+	private JButton helpBusca;
+	private JTextField barraBuscas;
 	
-	Vector<String> listaTrue;
-	Vector<String> listaFiltrada;
+	private JPanel painelSul;
+	private JButton apagarVeiculo;
+	private JButton help;
+	private JButton adicionarVeiculo;
+	private JButton reservarVeiculo;
+	private JButton liberarVeiculo;
+	
+	private Vector<String> listaTrue;
+	private Vector<String> listaFiltrada;
 	
 	
 	public TelaMinhaFrota( Perfil perfilReferencia ) {
@@ -64,7 +67,7 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	
 	public void iniciarCampos() {
 		
-		titulo = new JLabel( "Minha Frota" , new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/minhafrotaicon.png") , SwingConstants.LEFT );
+		titulo = new JLabel( "Minha Frota" , new ImageIcon(path + "minhafrotaicon.png") , SwingConstants.LEFT );
 		titulo.setHorizontalAlignment( SwingConstants.CENTER );
 		
 		listaTrue = new Vector<String>();
@@ -90,14 +93,14 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		
 		painelSul = new JPanel();
 		painelSul.setLayout( new FlowLayout( ) );
-		apagarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/removericon.png") );
+		apagarVeiculo = new JButton( new ImageIcon(path + "removericon.png") );
 		apagarVeiculo.addActionListener( new AcaoDelete() );
 		apagarVeiculo.setToolTipText("Remove da frota os veiculos selecionados");
 		apagarVeiculo.setHorizontalAlignment( SwingConstants.CENTER );
 		apagarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
 		
 		
-		help = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+		help = new JButton( new ImageIcon(path + "helpicon.png") );
 		help.setToolTipText("Guia");
 		help.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent event ) {
@@ -110,19 +113,19 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		help.setHorizontalAlignment(SwingConstants.CENTER);
 		help.setVerticalAlignment(SwingConstants.CENTER);
 		
-		adicionarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/msgnovofreteicon.png") );
+		adicionarVeiculo = new JButton( new ImageIcon(path + "msgnovofreteicon.png") );
 		adicionarVeiculo.setHorizontalAlignment(SwingConstants.CENTER);
 		adicionarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
 		adicionarVeiculo.setToolTipText("Adiciona um novo veículo na frota com as características descritas acima");
 		adicionarVeiculo.addActionListener( new AcaoAdicao() );
 		
-		reservarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/reservaricon.png") );
+		reservarVeiculo = new JButton( new ImageIcon(path + "reservaricon.png") );
 		reservarVeiculo.setHorizontalAlignment(SwingConstants.CENTER);
 		reservarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
 		reservarVeiculo.setToolTipText("Reservar veículos selecionados");
 		reservarVeiculo.addActionListener( new AcaoReservar() );
 		
-		liberarVeiculo = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/liberaricon.png") );
+		liberarVeiculo = new JButton( new ImageIcon(path + "liberaricon.png") );
 		liberarVeiculo.setHorizontalAlignment(SwingConstants.CENTER);
 		liberarVeiculo.setVerticalAlignment( SwingConstants.CENTER );
 		liberarVeiculo.setToolTipText("Liberar veículos selecionados");
@@ -151,10 +154,10 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 		painelBarra = new JPanel();
 		painelBarra.setLayout( new BorderLayout(10,10) );
 		
-		dica = new JLabel( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/searchicon.png"));
+		dica = new JLabel( new ImageIcon(path + "searchicon.png"));
 		dica.setToolTipText("Filtre sua busca!");
 		
-		helpBusca = new JButton( new ImageIcon("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/helpicon.png") );
+		helpBusca = new JButton( new ImageIcon(path + "helpicon.png") );
 		helpBusca.setToolTipText("Ajuda");
 		helpBusca.addActionListener( new ActionListener() {
 			public void actionPerformed( ActionEvent event ) {
@@ -390,12 +393,12 @@ public class TelaMinhaFrota extends JPanel implements Tela{
 	}
 	
 	public static void main(String[] args) {
-		JFrame janela = new JFrame("Teste");
-		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		janela.setSize( 600 , 700 );
-		janela.add( new TelaMinhaFrota( new BancoDeDadosPerfil("/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/").getPerfil() ) );
-		
-		janela.setVisible(true);
+//		JFrame janela = new JFrame("Teste");
+//		janela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		janela.setSize( 600 , 700 );
+//		janela.add( new TelaMinhaFrota( new BancoDeDadosPerfil(path + "").getPerfil() ) );
+//		
+//		janela.setVisible(true);
 	}
 
 }

@@ -2,6 +2,7 @@ package visual;
 
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.io.File;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -14,22 +15,24 @@ import javax.swing.SwingConstants;
 
 public class PainelNovoVeiculo extends JPanel implements Tela{
 	
-	JLabel titulo;
+	private final String path = new File("").getAbsolutePath() + "/db/";
 	
-	JPanel painelCentral;
+	private JLabel titulo;
 	
-	JLabel nome;
-	JLabel placa;
+	private JPanel painelCentral;
 	
-	JTextField campoNome;
-	JTextField campoPlaca;
+	private JLabel nome;
+	private JLabel placa;
 	
-	JPanel painelRadio;
-	JRadioButton carro;
-	JRadioButton carreta;
-	JRadioButton moto;
-	JRadioButton van;
-	ButtonGroup grupoBotoes;
+	private JTextField campoNome;
+	private JTextField campoPlaca;
+	
+	private JPanel painelRadio;
+	private JRadioButton carro;
+	private JRadioButton carreta;
+	private JRadioButton moto;
+	private JRadioButton van;
+	private ButtonGroup grupoBotoes;
 	
 	public PainelNovoVeiculo() {
 		setLayout( new GridLayout(3,1,10,10) );
@@ -38,7 +41,7 @@ public class PainelNovoVeiculo extends JPanel implements Tela{
 	}
 	
 	public void iniciarCampos() {
-		titulo = new JLabel("Novo veiculo", new ImageIcon( "/Users/victor/Repositorios/oo/ep2/GerenciadorDeFretes_EP2_UNB/db/novoveiculoicon.png"), SwingConstants.LEFT);
+		titulo = new JLabel("Novo veiculo", new ImageIcon( path + "novoveiculoicon.png"), SwingConstants.LEFT);
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setVerticalAlignment(SwingConstants.CENTER);
 		
