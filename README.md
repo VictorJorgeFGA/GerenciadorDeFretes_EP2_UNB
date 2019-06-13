@@ -20,18 +20,18 @@ O programa foi desenvolvido puramente na linguagem Java. Foi utilizado o **JDK 1
 ## Interface gráfica
 
 #### Home
-![](/GerenciadorDeFretes_EP2_UNB/images/home)
+![](/GerenciadorDeFretes_EP2_UNB/images/home.png)
 
 #### Novo Frete
-![](/GerenciadorDeFretes_EP2_UNB/images/novofrete1)
+![](/GerenciadorDeFretes_EP2_UNB/images/novofrete1.png)
 
-![](/GerenciadorDeFretes_EP2_UNB/images/novofrete2)
+![](/GerenciadorDeFretes_EP2_UNB/images/novofrete2.png)
 
 #### Minha Frota
-![](/GerenciadorDeFretes_EP2_UNB/images/minhafrota)
+![](/GerenciadorDeFretes_EP2_UNB/images/minhafrota.png)
 
 #### Histórico
-![](/GerenciadorDeFretes_EP2_UNB/images/historico)
+![](/GerenciadorDeFretes_EP2_UNB/images/historico.png)
 
 #### Ajustes
-![](/GerenciadorDeFretes_EP2_UNB/images/ajustes)
+![](/GerenciadorDeFretes_EP2_UNB/images/ajustes.png)
