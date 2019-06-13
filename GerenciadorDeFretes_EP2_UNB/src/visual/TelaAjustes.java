@@ -50,7 +50,7 @@ public class TelaAjustes extends JPanel implements Tela{
 	}
 	
 	public void iniciarCampos() {
-		titulo = new JLabel( "Ajustes", new ImageIcon( path + "msgajustesicon.png") , SwingConstants.LEFT );
+		titulo = new JLabel( "Ajustes", new ImageIcon( path + "ajustesicon.png") , SwingConstants.LEFT );
 		titulo.setHorizontalAlignment(SwingConstants.CENTER);
 		titulo.setVerticalAlignment( SwingConstants.CENTER );
 		

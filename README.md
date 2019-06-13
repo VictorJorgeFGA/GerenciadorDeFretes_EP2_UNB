@@ -35,3 +35,9 @@ O programa foi desenvolvido puramente na linguagem Java. Foi utilizado o **JDK 1
 
 #### Ajustes
 ![](/GerenciadorDeFretes_EP2_UNB/images/ajustes.png)
+
+## Diagrama de classes do projeto
+
+Segue, abaixo, um **diagrama simplificado** do back-end do projeto. Foram omitidos vários detalhes para melhor legibilidade do diagrama.
+
+![](/GerenciadorDeFretes_EP2_UNB/images/diagramaclassesep2.png)
