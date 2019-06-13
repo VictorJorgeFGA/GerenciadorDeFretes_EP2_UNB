@@ -17,6 +17,8 @@ A utilização do programa é simples e consiste em um passo a passo simples(que
 
 O programa foi desenvolvido puramente na linguagem Java. Foi utilizado o **JDK 11**. Portanto, para boa execução é recomendada a utilzação de **componentes Java devidamente atualizados**. A execução do programa pode ser feita executando o arquivo _GerenciadorDeFretes.jar_ contido na pasta GerenciadorDeFretes_EP2_UNB do projeto. Vale ressaltar que a execução só será possível se for utilizado o Java Runtime versão 55 ou superior.
 
+Caso não seja possível executar o programa com o arquivo _GerenciadorDeFretes.jar_, recomendo que abra o projeto na IDE Eclipse e execute a main da classe aplicacao/GerenciadorDeFretes.java. 
+
 ## Interface gráfica
 
 #### Home
