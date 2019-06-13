@@ -38,6 +38,8 @@ public class GUI extends JFrame {
 		super("Gerenciador de Fretes v0.0");
 		
 		this.perfilReferencia = perfilReferencia;
+		ImageIcon img = new ImageIcon( path + "msgfrotaicon.png" );
+		this.setIconImage( img.getImage() );
 		
 		setLayout( new BorderLayout( 10, 10 ) );
 		setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
